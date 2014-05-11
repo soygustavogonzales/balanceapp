@@ -1,0 +1,57 @@
+@import "/public/bower_components/flatstrap/less/bootstrap.less";
+@color1:#fff;
+@color2:#ede;
+@color3:rgba(58, 58, 58, 0.5);
+@medida-gral:1rem;
+
+body{
+	background: @color1;
+	#web{
+		#menu{
+			margin: 2*@medida-gral .5*@medida-gral;
+			font-size: 2*@medida-gral;
+		}
+		#left-content{
+			display: none;
+		}
+		#content-principal{
+			text-align: center;
+			h1,h2,h3{
+				margin: 0 0 .2*@medida-gral;
+			}
+			#tabla{
+				table{
+					thead{
+						tr th{
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+		#sidr{
+				padding: 3*@medida-gral 2*@medida-gral;
+				color:@color3;
+				.well{
+					text-align: center;
+					font-size: 1.8*@medida-gral;
+					padding: .2rem .5rem;
+					margin: 0 0 3*@medida-gral 0;
+				}
+				.input-group{
+					margin-bottom: .3*@medida-gral;
+				}
+				#detalles{
+					border-bottom: 1px dotted @color2;
+					padding: 0 0 5*@medida-gral 0;
+				}
+				#cuentas{
+					margin-top: 2*@medida-gral;
+					button{
+						margin: 1*@medida-gral ((205-101)/2px);
+					}
+				}
+		}
+}
+

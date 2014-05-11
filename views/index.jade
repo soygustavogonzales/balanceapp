@@ -1,0 +1,73 @@
+extends layout
+
+block content
+	#web
+		a#menu(href="#menu")
+			i(class="glyphicon glyphicon-wrench")
+		#left-content
+			div(ng-controller="ctrlCLeft")
+				#detalles
+					.well|Detalles de la Balanza
+					.input-group
+						span.input-group-addon
+							i(class="glyphicon glyphicon-user")
+						input.form-control(placeholder="razon social",ng-model="rsocial")
+					.input-group
+						span.input-group-addon
+							i(class="glyphicon glyphicon-comment")
+						input.form-control(placeholder="titulo",ng-model="subTitulo",value="")
+					.input-group
+						span.input-group-addon
+							i(class="glyphicon glyphicon-calendar")
+						input.form-control(placeholder="periodo",ng-model="periodo")
+				#cuentas
+					.well|Cuentas
+					select.form-control
+						option|HOla
+						option|HOla
+						option|HOla
+						option|HOla
+					.input-group
+						span.input-group-addon
+							i(class="glyphicon glyphicon-usd")
+						input.form-control(placeholder="Debe")
+					.input-group
+						span.input-group-addon
+							i(class="glyphicon glyphicon-usd")
+						input.form-control(placeholder="Haber")
+					button.btn(class="btn-default")
+						|Agregar     
+						i(class="glyphicon glyphicon-arrow-right")
+		#content-principal(ng-controller="ctrlCuentas")
+			#titulos
+				h1()|{{rsocial}}
+				h2()|{{subTitulo}}
+				h3()|{{periodo}}
+				hr
+			#tabla
+				.content
+					table.table
+						thead
+							tr
+								th|NroCta
+								th|Descripcion
+								th(colspan="2")|Movimientos
+								th(colspan="2")|Saldos
+								th(colspan="2")|Balance
+								th(colspan="2")|Resultados
+								th(colspan="2")
+									i(class="glyphicon glyphicon-cog")
+							tr
+								th
+								th
+								th|Debe
+								th|Haber
+								th|Deudor
+								th|Acreedor
+								th|Activo
+								th|Pasivo+Pat.
+								th|Perdidas
+								th|Ganancias
+								th
+						tbody
+							tr(ng-repeat="(key, cta) in cuentas")
