@@ -22,11 +22,11 @@ block content
 						input.form-control(placeholder="periodo",ng-model="periodo")
 				#cuentas
 					.well|Cuentas
-					select.form-control
-						option|HOla
-						option|HOla
-						option|HOla
-						option|HOla
+					select.form-control(ng-model="cta__",ng-change="update()",ng-mouseup="update()",ng-options="c as cuent.nro for cuent in cuentas_")
+					select.form-control(ng-model="cta",ng-change="update()")
+						option(ng-repeat="(key,ctas) in cuentas_")
+							{{ctas.nro}} : {{ctas.desc}}
+					{{cta.nro}},{{cta.desc}}
 					.input-group
 						span.input-group-addon
 							i(class="glyphicon glyphicon-usd")
@@ -43,6 +43,10 @@ block content
 				h1()|{{rsocial}}
 				h2()|{{subTitulo}}
 				h3()|{{periodo}}
+				//select(ng-controller="c as cuent.desc for cuent in cuentas_")
+				select.form-control(ng-model="cta",ng-change="update()")
+						option(ng-repeat="(key,ctas) in cuentas_")
+							{{ctas.nro}} : {{ctas.desc}}
 				hr
 			#tabla
 				.content
