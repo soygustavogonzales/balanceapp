@@ -4,55 +4,49 @@ block content
 	#web
 		a#menu(href="#menu")
 			i(class="glyphicon glyphicon-wrench")
+		a.btn(class="default",ng-click="toExcel()")|EXPORT
 		#left-content
-			div(ng-controller="ctrlCLeft")
+			div
 				#detalles
 					.well|Detalles de la Balanza
 					.input-group
 						span.input-group-addon
 							i(class="glyphicon glyphicon-user")
-						input.form-control(placeholder="razon social",ng-model="rsocial")
+						input.form-control(placeholder="",ng-model="rsocial")
 					.input-group
 						span.input-group-addon
 							i(class="glyphicon glyphicon-comment")
-						input.form-control(placeholder="titulo",ng-model="subTitulo",value="")
+						input.form-control(placeholder="",ng-model="subTitulo")
 					.input-group
 						span.input-group-addon
 							i(class="glyphicon glyphicon-calendar")
-						input.form-control(placeholder="periodo",ng-model="periodo")
+						input.form-control(placeholder="",ng-model="periodo")
 				#cuentas
 					.well|Cuentas
-					select.form-control(ng-model="cta__",ng-change="update()",ng-mouseup="update()",ng-options="c as cuent.nro for cuent in cuentas_")
-					select.form-control(ng-model="cta",ng-change="update()")
-						option(ng-repeat="(key,ctas) in cuentas_")
-							{{ctas.nro}} : {{ctas.desc}}
-					{{cta.nro}},{{cta.desc}}
+					select.form-control(id="cta")
+						option(ng-repeat="(key, value) in cuentas_")|{{value.nro}} : {{value.desc}}
 					.input-group
 						span.input-group-addon
 							i(class="glyphicon glyphicon-usd")
-						input.form-control(placeholder="Debe")
+						input.form-control(placeholder="Debe",ng-model="debe")
 					.input-group
 						span.input-group-addon
 							i(class="glyphicon glyphicon-usd")
-						input.form-control(placeholder="Haber")
-					button.btn(class="btn-default")
+						input.form-control(placeholder="Haber",ng-model="haber")
+					button.btn(class="btn-default",ng-click="agregarCta()")
 						|Agregar     
 						i(class="glyphicon glyphicon-arrow-right")
-		#content-principal(ng-controller="ctrlCuentas")
+		#content-principal()
 			#titulos
 				h1()|{{rsocial}}
 				h2()|{{subTitulo}}
 				h3()|{{periodo}}
-				//select(ng-controller="c as cuent.desc for cuent in cuentas_")
-				select.form-control(ng-model="cta",ng-change="update()")
-						option(ng-repeat="(key,ctas) in cuentas_")
-							{{ctas.nro}} : {{ctas.desc}}
 				hr
 			#tabla
 				.content
-					table.table
+					table.table(id="tableExport",class="table-bordered table-hover table-responsive table-striped")
 						thead
-							tr
+							tr.success
 								th|NroCta
 								th|Descripcion
 								th(colspan="2")|Movimientos
@@ -61,7 +55,7 @@ block content
 								th(colspan="2")|Resultados
 								th(colspan="2")
 									i(class="glyphicon glyphicon-cog")
-							tr
+							tr.warning
 								th
 								th
 								th|Debe
@@ -74,4 +68,47 @@ block content
 								th|Ganancias
 								th
 						tbody
-							tr(ng-repeat="(key, cta) in cuentas")
+							tr(ng-repeat="(key, cta) in tablaCtas")
+								th|{{cta.nroCta}}
+								th|{{cta.descripcion}}
+								th|{{cta.movimientos.debe}}
+								th|{{cta.movimientos.haber}}
+								th|{{cta.saldos.deudor}}
+								th|{{cta.saldos.acreedor}}
+								th|{{cta.balance.activo}}
+								th|{{cta.balance.pasPat}}
+								th|{{cta.resultados.perdidas}}
+								th|{{cta.resultados.ganancias}}
+							tr.danger
+								th|*
+								th|Sumas
+								th|{{sumas.m.debe}}
+								th|{{sumas.m.haber}}
+								th|{{sumas.s.deudor}}
+								th|{{sumas.s.acreedor}}
+								th|{{sumas.b.activo}}
+								th|{{sumas.b.pasPat}}
+								th|{{sumas.r.perdidas}}
+								th|{{sumas.r.ganancias}}
+							tr.danger
+								th|89
+								th|Res.Ejer
+								th|*
+								th|*
+								th|*
+								th|*
+								th|{{resEjer.b.activo}}
+								th|{{resEjer.b.pasPat}}
+								th|{{resEjer.r.perdidas}}
+								th|{{resEjer.r.ganancias}}
+							tr.danger
+								th|*
+								th|Sumas Totales
+								th|{{sumas.m.debe}}
+								th|{{sumas.m.haber}}
+								th|{{sumas.s.deudor}}
+								th|{{sumas.s.acreedor}}
+								th|{{sumas.b.activo}}
+								th|{{sumas.b.activo}}
+								th|{{sumas.r.ganancias}}
+								th|{{sumas.r.ganancias}}

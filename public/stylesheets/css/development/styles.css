@@ -5711,9 +5711,6 @@ body #web #menu {
   margin: 2rem 0.5rem;
   font-size: 2rem;
 }
-body #web #left-content {
-  display: none;
-}
 body #web #content-principal {
   text-align: center;
 }

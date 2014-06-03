@@ -1,0 +1,14 @@
+{
+  "name": "battatech_excelexport",
+  "homepage": "https://github.com/battatech/battatech_excelexport",
+  "version": "2.0.0",
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.0",
+    "commit": "07016e8f7102c3d32879edbb7ef4b44f4fdf4890"
+  },
+  "_source": "https://github.com/battatech/battatech_excelexport.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/battatech/battatech_excelexport.git"
+}
