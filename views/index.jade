@@ -5,10 +5,12 @@ block content
 		a#menu(href="#menu")
 			i(class="glyphicon glyphicon-wrench")
 		a.btn(class="default",ng-click="toExcel()")|EXPORT
-		#left-content
-			div
+		#left-content(class="panel panel-primary")
+			.panel-heading
+				|Detalles
+			.panel-body
 				#detalles
-					.well|Detalles de la Balanza
+					.well(class="well-sm")|Detalles de la Balanza
 					.input-group
 						span.input-group-addon
 							i(class="glyphicon glyphicon-user")
@@ -22,7 +24,7 @@ block content
 							i(class="glyphicon glyphicon-calendar")
 						input.form-control(placeholder="",ng-model="periodo")
 				#cuentas
-					.well|Cuentas
+					.well(class="well-sm")|Cuentas
 					select.form-control(id="cta")
 						option(ng-repeat="(key, value) in cuentas_")|{{value.nro}} : {{value.desc}}
 					.input-group

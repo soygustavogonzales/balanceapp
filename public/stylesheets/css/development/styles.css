@@ -5711,6 +5711,14 @@ body #web #menu {
   margin: 2rem 0.5rem;
   font-size: 2rem;
 }
+body #web #left-content {
+  width: 380px;
+  height: auto;
+  position: absolute;
+}
+body #web #left-content .well {
+  margin: 1.8rem 0 0 0;
+}
 body #web #content-principal {
   text-align: center;
 }
