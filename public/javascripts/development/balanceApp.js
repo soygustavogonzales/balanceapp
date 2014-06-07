@@ -232,6 +232,45 @@ balanceApp.controller('ctrlPrincipal',['$scope','cuentas','$timeout',function ($
 
 	}
 
+	$scope.remove = function(index){	
+		$scope.tablaCtas.splice(index,1)
+		var debeDeleted = parseInt($scope.tablaCtas[index].movimientos.debe),
+		haberDeleted = parseInt($scope.tablaCtas[index].movimientos.haber);
+
+		console.log(index+" : "+debeDeleted+" , "+haberDeleted)
+
+		$scope.sumas.m.debe = 0
+		$scope.sumas.m.haber = 0
+		if($scope.tablaCtas.length>0){
+			
+			angular.forEach($scope.tablaCtas, function(val,key){
+
+				if(val!=undefined){
+					console.log(val.movimientos.debe)
+					console.log(val.movimientos.haber)
+
+					$scope.sumas.m.debe += val.movimientos.debe  
+					$scope.sumas.m.haber += val.movimientos.haber
+				}
+
+				/*
+				*/
+			})
+		}
+			
+/*
+
+		$scope.sumas.s.deudor -= ctaDeleted
+		$scope.sumas.s.acreedor -= ctaDeleted
+
+		$scope.sumas.b.activo -= ctaDeleted
+		$scope.sumas.b.pasPat -= ctaDeleted
+
+		$scope.sumas.r.perdidas -= ctaDeleted
+		$scope.sumas.r.ganancias -= ctaDeleted
+		*/
+	}
+
 	$scope.toExcel = function(){
 		$("#tableExport").btechco_excelexport({
       containerid: "tableExport"

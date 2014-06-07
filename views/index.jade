@@ -25,19 +25,19 @@ block content
 						input.form-control(placeholder="",ng-model="periodo")
 				#cuentas
 					.well(class="well-sm")|Cuentas
-					select.form-control(id="cta")
-						option(ng-repeat="(key, value) in cuentas_")|{{value.nro}} : {{value.desc}}
-					.input-group
-						span.input-group-addon
-							i(class="glyphicon glyphicon-usd")
-						input.form-control(placeholder="Debe",ng-model="debe")
-					.input-group
-						span.input-group-addon
-							i(class="glyphicon glyphicon-usd")
-						input.form-control(placeholder="Haber",ng-model="haber")
-					button.btn(class="btn-default",ng-click="agregarCta()")
-						|Agregar     
-						i(class="glyphicon glyphicon-arrow-right")
+					form(name="formCtas",novalidate)
+						select.form-control(id="cta",name="optCtas")
+							option(ng-repeat="(key, value) in cuentas_")|{{value.nro}} : {{value.desc}}
+						.input-group
+							span.input-group-addon
+								i(class="glyphicon glyphicon-usd")
+							input.form-control(name="debe",placeholder="Debe",ng-model="debe",required)
+						.input-group
+							span.input-group-addon
+								i(class="glyphicon glyphicon-usd")
+							input.form-control(name="haber",placeholder="Haber",ng-model="haber",required)
+						button.btn(class="btn-default",ng-click="agregarCta()",ng-disabled="formCtas.$invalid")|Agregar     
+							i(class="glyphicon glyphicon-arrow-right")
 		#content-principal()
 			#titulos
 				h1()|{{rsocial}}
@@ -49,17 +49,15 @@ block content
 					table.table(id="tableExport",class="table-bordered table-hover table-responsive table-striped")
 						thead
 							tr.success
-								th|NroCta
-								th|Descripcion
+								th(rowspan="2")|NroCta
+								th(rowspan="2")|Descripcion
 								th(colspan="2")|Movimientos
 								th(colspan="2")|Saldos
 								th(colspan="2")|Balance
 								th(colspan="2")|Resultados
-								th(colspan="2")
+								th(rowspan="2")
 									i(class="glyphicon glyphicon-cog")
 							tr.warning
-								th
-								th
 								th|Debe
 								th|Haber
 								th|Deudor
@@ -68,7 +66,6 @@ block content
 								th|Pasivo+Pat.
 								th|Perdidas
 								th|Ganancias
-								th
 						tbody
 							tr(ng-repeat="(key, cta) in tablaCtas")
 								th|{{cta.nroCta}}
@@ -81,6 +78,8 @@ block content
 								th|{{cta.balance.pasPat}}
 								th|{{cta.resultados.perdidas}}
 								th|{{cta.resultados.ganancias}}
+								th
+									button.btn(class="btn-danger",ng-click="remove($index)")|X
 							tr.danger
 								th|*
 								th|Sumas
