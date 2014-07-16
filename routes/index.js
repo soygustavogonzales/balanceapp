@@ -15,9 +15,17 @@ router.get('/pages/:page',function(req,res){
 })
 
 router.get('/partials/:page',function(req,res){
-	console.log(req.params.page);
-	var page_ = req.params.page
-	res.render('/partials/%d',page_)
+	var page = req.params.page;
+	console.log("the page : "+page)
+	console.log(__dirname+'/'+page+'.jade')
+
+/*
+	res.render((__dirname+'/%d.jade',page),{
+		pretty:true
+	})
+*/
+	res.render(__dirname+'../views/partials/'+page+'.jade')
 })
+
 
 module.exports = router;

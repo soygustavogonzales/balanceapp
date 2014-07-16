@@ -9,7 +9,9 @@
     "angular":"1.2.16",
     "angular-route":"latest",
     "jquery":"latest",
+    "jqueryui":"latest",
     "flatstrap":"latest",
+    "fullpage.js":"latest",
     "sidr":"latest",
     "battatech_excelexport":"https://github.com/battatech/battatech_excelexport.git"
     },
