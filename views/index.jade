@@ -1,9 +1,9 @@
-extends layout
+extends layouts/layoutHome
 
 block content
 	#web
 		#fullpage
 			.section#section0
 				include ./partials/login.jade
-			.section#section1
-				include ./partials/hojaBalance.jade
+			.section#section1(ng-controller="ctrlObject")
+				

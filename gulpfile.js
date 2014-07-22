@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
 	lessCss = require('gulp-less'), 
 	path = require('path'),
-	uncss = require('gulp-uncss'),
+	//uncss = require('gulp-uncss'),
 	minifyCss = require('gulp-minify-css'),
 	jsmin = require('gulp-jsmin'),
 	coffee = require('gulp-coffee'),
@@ -46,6 +46,7 @@ gulp.task('concat-css',function(){
 })
 
 /*Tarea limpiar las reglas css no utilizadas en los estilos*/
+/*
 gulp.task('uncss',function(){
 	return gulp.src('/public/stylesheets/css/development/styles.css')
 	.pipe(uncss({
@@ -54,6 +55,7 @@ gulp.task('uncss',function(){
 	.pipe(gulp.dest('/public/stylesheets/css/semiproduction'));
 })
 
+*/
 
 /*Precompilar archivos coffeescript en .js*/
 gulp.task('coffee', function() {
@@ -84,12 +86,12 @@ gulp.task('default',function(){
 	gulp.run('js-minify')
 	gulp.run('connect')
 	gulp.run('jade')
-	gulp.run('uncss')
+	//gulp.run('uncss')
 
 //Vigilancia de archivos, cuando ocurra un cambio en cualquiero de estos archivos se ejecutara la accion o tarea especificada
 	gulp.watch('public/stylesheets/less/*.less',function(){
 		gulp.run('less')
-		gulp.run('uncss')
+	//	gulp.run('uncss')
 	})
 	gulp.watch('public/stylesheets/css/development/*.css',function(){
 		gulp.run('css-minify')

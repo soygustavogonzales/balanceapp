@@ -5706,31 +5706,6 @@ button.close {
 }
 body {
   background: #ffffff;
-  /*
-		#sidr{
-				padding: 3*@medida-gral 2*@medida-gral;
-				color:@color3;
-				.well{
-					text-align: center;
-					font-size: 1.8*@medida-gral;
-					padding: .2rem .5rem;
-					margin: 0 0 3*@medida-gral 0;
-				}
-				.input-group{
-					margin-bottom: .3*@medida-gral;
-				}
-				#detalles{
-					border-bottom: 1px dotted @color2;
-					padding: 0 0 5*@medida-gral 0;
-				}
-				#cuentas{
-					margin-top: 2*@medida-gral;
-					button{
-						margin: 1*@medida-gral ((205-101)/2px);
-					}
-				}
-		}//sidr
-		*/
 }
 body #web #section0 .form-signin {
   max-width: 330px;
@@ -5796,26 +5771,11 @@ body #web #section0 .new-account {
   display: block;
   margin-top: 10px;
 }
-body #web #section1 #menu {
-  margin: 2rem 0.5rem;
-  font-size: 2rem;
+body #web #section1 object {
+  margin: 0 0 0 6%;
 }
-body #web #section1 #left-content {
-  width: 380px;
-  height: auto;
-  position: absolute;
-}
-body #web #section1 #left-content .well {
-  margin: 1.8rem 0 0 0;
-}
-body #web #section1 #content-principal {
-  text-align: center;
-}
-body #web #section1 #content-principal h1,
-body #web #section1 #content-principal h2,
-body #web #section1 #content-principal h3 {
-  margin: 0 0 0.2rem;
-}
-body #web #section1 #content-principal #tabla table thead tr th {
-  text-align: center;
+body .loader {
+  display: block;
+  position: relative;
+  margin: 0 0em 0 25em;
 }

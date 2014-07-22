@@ -1,17 +1,17 @@
      ;jQuery(document).ready(function() {
 
-							$("#menu").click(function() {
-						  	$("#left-content").toggle("slow");
-						   return false;
-						 });
+
 						 
 	      $('#fullpage').fullpage({
 	                anchors: ['1','2'],
 	    	          	scrollingSpeed: 1000,
+	    	          	keyboardScrolling:false,//para que no se pueda hacer scroll con el teclado
 	                autoScrolling:true,
 	                resize:false,
 	                navigation:false
 	       });
-
+	      /*Para que no se pueda hacer scroll con el mouse*/
+	      $.fn.fullpage.setAllowScrolling(false);
+	      
     });
 

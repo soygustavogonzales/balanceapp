@@ -2,20 +2,24 @@ doctype html
 html(ng-app="balanceApp")
 		head
 			title= title
-			link(rel='stylesheet', href='/bower_components/sidr/stylesheets/jquery.sidr.light.css')
 			link(rel='stylesheet', href='/stylesheets/css/development/styles.css')
+			link(rel='stylesheet', href='/bower_components/flatstrap/dist/css/flatstrap.min.css')
+			link(rel='stylesheet', href='/bower_components/flatstrap/dist/css/flatstrap-theme.min.css')
 			link(rel='stylesheet', href='/bower_components/fullpage.js/jquery.fullPage.css')
-		body(ng-controller="ctrlPrincipal")
+		body()
 			block content
 			block import
 				script(src="/bower_components/jquery/dist/jquery.min.js")
-				//script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js")
-				//script(src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js")
 				script(src="/bower_components/jqueryui/jquery-ui.js")
 				script(src="/bower_components/fullpage.js/jquery.fullPage.js")
-				script(src="/bower_components/battatech_excelexport/Scripts/jquery.battatech.excelexport.js")
 				script(src="/bower_components/flatstrap/dist/js/flatstrap.min.js")
 				script(src="/javascripts/development/efecto.js")
 				script(src="/bower_components/angular/angular.min.js")
 				script(src="/javascripts/development/balanceApp.js")
+				script(src="/javascripts/development/providers/pvrEfx.js")
+				script(src="/javascripts/development/providers/pvrUserAgent.js")
+				script(src="/javascripts/development/balanceApp.config.js")
+				script(src="/javascripts/development/services/svcEmpresa.js")
+				script(src="/javascripts/development/controllers/ctrlLogin.js")
+				script(src="/javascripts/development/controllers/ctrlObject.js")
 				block sub_content1

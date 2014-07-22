@@ -1,0 +1,19 @@
+doctype html
+html(ng-app="boardApp")
+		head
+			title= title
+			link(rel='stylesheet', href='/bower_components/flatstrap/dist/css/flatstrap.min.css')
+			link(rel='stylesheet', href='/bower_components/flatstrap/dist/css/flatstrap-theme.min.css')
+			link(rel='stylesheet', href='/stylesheets/css/development/boardApp.css')
+		body()
+			block content
+			block import
+				script(src="/bower_components/jquery/dist/jquery.min.js")
+				script(src="/bower_components/battatech_excelexport/Scripts/jquery.battatech.excelexport.js")
+				script(src="/bower_components/flatstrap/dist/js/flatstrap.min.js")
+				script(src="/javascripts/development/efecto2.js")
+				script(src="/bower_components/angular/angular.min.js")
+				script(src="/javascripts/development/modules/boardApp.js")
+				script(src="/javascripts/development/services/svcCliente.js")
+				script(src="/javascripts/development/controllers/ctrlTableBoard.js")
+				block sub_content1

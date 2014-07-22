@@ -1,3 +1,11 @@
 tsa
 tsa.pub
+/node_modules
+#nunca dejes de observar y dar seguimiento a .gitignore por favor
+!.gitignore
+#todos los archivos que terminen en _ con cualquier extension
+*_.*
+#a los degub
+*.log
+*.debug
 

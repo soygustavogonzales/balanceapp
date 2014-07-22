@@ -3,7 +3,7 @@
 		.col-sm-6.col-md-4.col-md-offset-4(ng-controller="ctrlLogin")
 			h1.text-center.login-title Loggeate por favor!!
 			.account-wall
-				img.profile-img(src='https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120', alt='')
+				img.profile-img(src='/images/photo.png', alt='')
 				form.form-signin(name="loginForm",ng-submit="submitForm()",novalidate,ng-minlength="5",required)
 					input.form-control(ng-model="email",name="email",type='email', placeholder='Email', required='required', autofocus='autofocus')
 					input.form-control(ng-model="password",name="password",type='password', placeholder='Password',ng-minlength="5",required)
