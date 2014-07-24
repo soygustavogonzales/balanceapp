@@ -17,8 +17,8 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 
 		}).then(function(rpta){
 			console.log("loggeo correcto: ")
-			console.log(rpta)
-			$scope.isLoggeoCorrect = true
+			console.log(rpta.data)
+			$scope.isLoggeoCorrect = rpta.data
 
 		}, function(data){
 			console.log("error en loggeo :")
@@ -28,9 +28,9 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 
 		$scope.$watch('isLoggeoCorrect',function(){
 
-				console.log("loggeo correcto? :"+$scope.isLoggeoCorrect)
+				console.log("loggeo correcto? :"+(typeof $scope.isLoggeoCorrect))
 
-				if($scope.isLoggeoCorrect&&$scope.isLoggeoCorrect==true){//if loggeo exitoso
+				if($scope.isLoggeoCorrect&&$scope.isLoggeoCorrect=='true'){//if loggeo exitoso
 
 					console.log($scope.email)
 					console.log($scope.password)
@@ -63,9 +63,5 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 
 	}
 
-	$scope.$watch('data',function(){
-		if($scope.data)
-			console.log($scope.data)
-	})
 
 }]);

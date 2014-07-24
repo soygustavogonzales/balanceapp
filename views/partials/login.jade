@@ -1,17 +1,18 @@
 .container
 	.row
-		.col-sm-6.col-md-4.col-md-offset-4(ng-controller="ctrlLogin")
-			h1.text-center.login-title Loggeate por favor!!
-			.account-wall
-				img.profile-img(src='/images/photo.png', alt='')
-				form.form-signin(name="loginForm",ng-submit="submitForm()",novalidate,ng-minlength="5",required)
-					input.form-control(ng-model="email",name="email",type='email', placeholder='Email', required='required', autofocus='autofocus')
-					input.form-control(ng-model="password",name="password",type='password', placeholder='Password',ng-minlength="5",required)
-					button.btn.btn-lg.btn-primary.btn-block(type='submit',ng-disabled="loginForm.$invalid")
-						| Ingresar
-					label.checkbox.pull-left
-						input(type='checkbox', value='remember-me')
-						| Recuerdame
-					a.pull-right.need-help(href='#') Necesitas ayuda? 
-					span.clearfix
-				a.text-center.new-account(href='#') Quiero crear mi cuenta
+		.col-lg-12.text-center
+			.loginForm(ng-controller="ctrlLogin")
+				h1.text-center.login-title Loggeate por favor!!
+				.account-wall
+					img.profile-img(src='/images/photo.png', alt='')
+					form.form-signin(name="loginForm",ng-submit="",novalidate,ng-minlength="5",required)
+						input.form-control(ng-model="email",name="email",type='email', placeholder='Email', required='required', autofocus='autofocus')
+						input.form-control(ng-model="password",name="password",type='password', placeholder='Password',ng-minlength="5",required)
+						button.btn.btn-lg.btn-primary.btn-block(ng-click="submitForm()",type='submit',ng-disabled="loginForm.$invalid")
+							| Ingresar
+						label.checkbox.pull-left
+							input(type='checkbox', value='remember-me')
+							| Recuerdame
+						a.pull-right.need-help(href='#') Necesitas ayuda? 
+						span.clearfix
+					a.text-center.new-account(href='#') Quiero crear mi cuenta

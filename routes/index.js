@@ -3,17 +3,42 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index',{
-  	pretty:true
-  });
+  data = {
+    pretty:true
+  }
+  if(req.session.user&&req.session.user.status){
+    console.log("ya existe session de: "+ req.session.user.email)
+    var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
+        //alto = (alto<600)?parseInt(alto)+100:alto;
+        data = {
+          user:{
+            email:req.session.user.email
+          },
+          ancho:ancho,
+          alto:alto
+        }
+    res.render('partials/objectBoardApp.jade',data)
+  }
+  else{
+    console.log("sesion nueva")
+    res.render('index',data);
+  }
 });
 
 router.get('/pages/:page',function(req,res){
 	var page = req.params.page;
+  var data = {}
 		console.log("the page pages request:",page)
-	 res.render(("%d.jade",page),{
-  	pretty:true
-  });
+    if(page=="hojaBalance"){
+      if(req.session.user&&req.session.user.status)
+        data = {
+            user:{
+              email:req.session.user.email
+            },
+            foo:"bar"
+          }
+    }
+	 res.render(("%d.jade",page),data);
 })
 
 router.get('/partials/:page',function(req,res){
@@ -23,6 +48,7 @@ router.get('/partials/:page',function(req,res){
     case (page=="objectBoardApp"):
       if(req.session.user&&req.session.user.status)
         var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
+        //alto = (alto<600)?parseInt(alto)+100:alto;
         data = {ancho:ancho,alto:alto}
     break;
   }
@@ -48,6 +74,18 @@ router.post('/users/login',function(req,res){
   }
   res.send(200,false)
 
+})
+
+router.get('/users/logout',function(req,res){
+  var session = true;
+  req.session.user.status = false;
+  req.session.destroy(function(){
+    console.log("session destruida!!")
+    session = false;
+    //res.send(200,'<a href="/">volver al index</a>')
+    res.render('index')
+  })
+  //if(!session)
 })
 
 router.post('/userAgent',function(req,res){

@@ -20,8 +20,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({secret: 'mi secreto'}));
-
-app.use(express.static(path.join(__dirname, 'public')));
+var nroDays = 8, time = nroDays*24*3600*1000;
+app.use(express.static(path.join(__dirname, 'public'),{maxAge:time}));
 
 app.use('/', routes);
 

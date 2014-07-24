@@ -1,19 +1,24 @@
-#left-content {
+html {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+}
+html #left-content {
   width: 380px;
   height: auto;
   position: absolute;
 }
-#left-content .well {
+html #left-content .well {
   margin: 1.8rem 0 0 0;
 }
-#content-principal {
+html #content-principal {
   text-align: center;
 }
-#content-principal h1,
-#content-principal h2,
-#content-principal h3 {
+html #content-principal h1,
+html #content-principal h2,
+html #content-principal h3 {
   margin: 0 0 0.2rem;
 }
-#content-principal #tabla table thead tr th {
+html #content-principal #tabla table thead tr th {
   text-align: center;
 }
