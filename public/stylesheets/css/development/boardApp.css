@@ -1,23 +1,22 @@
+/*Pallette of color from Movlim systems
+
+Created by Gustavo Gonzales @gagdgonda
+*/
+/*Gamma of morados*/
 html {
   width: 90%;
   height: auto;
   margin: 0 auto;
 }
-html #left-content {
-  width: 380px;
-  height: auto;
-  position: absolute;
-}
-html #left-content .well {
-  margin: 1.8rem 0 0 0;
-}
 html #content-principal {
+  margin: 5% 0 0 0;
   text-align: center;
 }
 html #content-principal h1,
 html #content-principal h2,
 html #content-principal h3 {
   margin: 0 0 0.2rem;
+  color: #33205f;
 }
 html #content-principal #tabla table thead tr th {
   text-align: center;

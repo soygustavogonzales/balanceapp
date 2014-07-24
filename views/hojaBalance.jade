@@ -2,19 +2,30 @@ extends layouts/layoutBalance
 block content
 	div(ng-controller="ctrlTableBoard")
 		#top
-			ul.nav.nav-pills
-				li: a#menu(href="#menu")
-									i(class="glyphicon glyphicon-wrench")
-				li: a.btn(class="default",ng-click="toExcel()"): i.glyphicon.glyphicon-floppy-save
-				li: a.btn(class="default",href="/users/logout"): i.glyphicon.glyphicon-log-out
-				if (user.email)
-					li: a.btn(href="#")| #{user.email}
+			.navbar.navbar-default.navbar-fixed-top
+				.container
+					.navbar-header
+						button.navbar-toggle(data-toggle="collapse",data-target=".navbar-collapse")
+							i.icon-bar
+							i.icon-bar
+							i.icon-bar
+						a.navbar-brand(href="#")|Movlim Systems
+					.navbar-collapse.collapse
+						ul.nav.navbar-nav
+							li: a#menu(href="#menu")
+												i(class="glyphicon glyphicon-wrench")
+							li: a.btn(class="default",ng-click="toExcel()"): i.glyphicon.glyphicon-floppy-save
+							li: a.btn(class="default",href="/users/logout"): i.glyphicon.glyphicon-log-out
+							if (user.email)
+								li: a.btn(href="#")| #{user.email}
 		#content-principal
-			#titulos
-				h1()|{{rsocial}}
-				h2()|{{lema}}
-				h3()|{{fecha}}
-				hr
+			.container
+				.row
+					#titulos
+						h1()|{{rsocial}}
+						h2()|{{lema}}
+						h3()|{{fecha}}
+						hr
 			#enterData
 				.row(ng-init="buscar = false;columnsRow = 'col-sm-1'")
 					.grupo1(ng-show="!buscar")

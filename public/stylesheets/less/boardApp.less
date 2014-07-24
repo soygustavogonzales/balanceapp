@@ -1,25 +1,16 @@
-@medida-gral:1rem;
+@import "variables/variables.less";
+
 html{
 		//overflow: hidden;	
 		width:90%;
 		height: auto;
 		margin: 0 auto;
-			#menu{
-				
-			}
-			#left-content{
-				//display: none;
-				width:380px;
-				height:auto;
-				position: absolute;
-				.well{
-					margin: 1.8rem 0 0 0;
-				}
-			}
 			#content-principal{
+				margin: 5% 0 0 0;
 				text-align: center;
 				h1,h2,h3{
 					margin: 0 0 .2*@medida-gral;
+					color:@color-p;
 				}
 				#tabla{
 					table{
