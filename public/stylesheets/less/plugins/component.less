@@ -1,3 +1,5 @@
+@import "../variables/variables.less";
+
 @font-face {
 	font-family: 'ecoico';
 	src:url('/stylesheets/fonts/timelineicons/ecoico.eot');
@@ -23,7 +25,7 @@
 	top: 0;
 	bottom: 0;
 	width: 10px;
-	background: #afdcf8;
+	background: lighten(@movlimSys-color-p, 20%);
 	left: 20%;
 	margin-left: -10px;
 }
@@ -45,20 +47,29 @@
 	font-size: 0.9em;
 	color: #bdd0db;
 }
+/*
+@movlimSys-color-p:#33205F;
+@movlimSys-color-s1:lighten(@movlimSys-color-p, 10%);
+@movlimSys-color-s2:lighten(@movlimSys-color-p, 20%);
+@movlimSys-color-white-1:#fff;
+@movlimSys-medida-gral:1rem;
+
+*/
+
 
 .cbp_tmtimeline > li .cbp_tmtime span:last-child {
 	font-size: 2.9em;
-	color: #3594cb;
+	color: lighten(@movlimSys-color-p, 1%);
 }
 
 .cbp_tmtimeline > li:nth-child(odd) .cbp_tmtime span:last-child {
-	color: #6cbfee;
+	color: lighten(@movlimSys-color-p,25%);
 }
 
 /* Right content */
 .cbp_tmtimeline > li .cbp_tmlabel {
 	margin: 0 0 15px 25%;
-	background: #3594cb;
+	background: lighten(@movlimSys-color-p, 1%);
 	color: #fff;
 	padding: 2em;
 	font-size: 1.2em;
@@ -69,7 +80,7 @@
 }
 
 .cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel {
-	background: #6cbfee;
+	background: lighten(@movlimSys-color-p,25%);
 }
 
 .cbp_tmtimeline > li .cbp_tmlabel h2 { 
@@ -87,13 +98,13 @@
 	width: 0;
 	position: absolute;
 	pointer-events: none;
-	border-right-color: #3594cb;
+	border-right-color: lighten(@movlimSys-color-p, 1%);
 	border-width: 10px;
 	top: 10px;
 }
 
 .cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
-	border-right-color: #6cbfee;
+	border-right-color: lighten(@movlimSys-color-p,25%);
 }
 
 /* The icons */
@@ -111,9 +122,9 @@
 	-webkit-font-smoothing: antialiased;
 	position: absolute;
 	color: #fff;
-	background: #46a4da;
+	background: lighten(@movlimSys-color-p,30%);
 	border-radius: 50%;
-	box-shadow: 0 0 0 8px #afdcf8;
+	box-shadow: 0 0 0 8px lighten(@movlimSys-color-p, 20%);
 	text-align: center;
 	left: 20%;
 	top: 0;
@@ -170,13 +181,13 @@
 		right: auto;
 		left: 20px;
 		border-right-color: transparent;
-		border-bottom-color: #3594cb;
+		border-bottom-color: lighten(@movlimSys-color-p, 1%);
 		top: -20px;
 	}
 
 	.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
 		border-right-color: transparent;
-		border-bottom-color: #6cbfee;
+		border-bottom-color: lighten(@movlimSys-color-p,25%);
 	}
 
 	.cbp_tmtimeline > li .cbp_tmicon {

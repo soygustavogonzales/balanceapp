@@ -1,6 +1,6 @@
 {
   "name": "movlimSystems",
-  "version": "0.0.1-5",
+  "version": "0.0.1-8",
   "main": "bin/www.js",
   "private": true,
   "scripts": {
