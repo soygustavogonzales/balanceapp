@@ -1,16 +1,26 @@
 @import "variables/variables.less";
-
+@import "plugins/default.less";
+@import "plugins/component.less";
 html{
 		//overflow: hidden;	
 		width:90%;
 		height: auto;
 		margin: 0 auto;
+		#top{
+			a{
+				.logo{
+					vertical-align: middle;
+					min-width:150px;
+					height: 30px;
+				}
+			}
+		}
 			#content-principal{
-				margin: 5% 0 0 0;
+				margin: 5rem 0 0 0;
 				text-align: center;
 				h1,h2,h3{
-					margin: 0 0 .2*@medida-gral;
-					color:@color-p;
+					margin: 0 0 .2*@movlimSys-medida-gral;
+					color:@movlimSys-color-p;
 				}
 				#tabla{
 					table{
