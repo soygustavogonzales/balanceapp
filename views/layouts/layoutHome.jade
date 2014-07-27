@@ -4,9 +4,10 @@ html(ng-app="balanceApp")
 			title= title
 			meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 			link(rel='stylesheet', href='/stylesheets/css/development/styles.css')
-			link(rel='stylesheet', href='/bower_components/flatstrap/dist/css/bootstrap.min.css')
+			link(rel='stylesheet', href='/bower_components/flatstrap/dist/css/bootstrap.custom.css')
 			link(rel='stylesheet', href='/bower_components/flatstrap/dist/css/bootstrap-theme.min.css')
-			link(rel='stylesheet', href='/bower_components/fullpage.js/jquery.fullPage.css')
+			if (!isMovile) 
+				link(rel='stylesheet', href='/bower_components/fullpage.js/jquery.fullPage.css')
 
 		body()
 			block content
@@ -18,9 +19,16 @@ html(ng-app="balanceApp")
 				script(src="/javascripts/development/efecto.js")
 				script(src="/bower_components/angular/angular.min.js")
 				script(src="/javascripts/development/balanceApp.js")
-				script(src="/javascripts/development/providers/pvrEfx.js")
 				script(src="/javascripts/development/providers/pvrUserAgent.js")
-				script(src="/javascripts/development/balanceApp.config.js")
+				if (isMovile) 
+					script(src="/javascripts/development/balanceApp.movile.config.js")
+				else
+					script(src="/javascripts/development/providers/pvrEfx.js")
+					script(src="/javascripts/development/balanceApp.config.js")
 				script(src="/javascripts/development/services/svcEmpresa.js")
-				script(src="/javascripts/development/controllers/ctrlLogin.js")
+				if (isMovile)
+					script(src="/javascripts/development/controllers/ctrlLogin.movile.js")
+				else
+					script(src="/javascripts/development/controllers/ctrlLogin.js")
+					
 				block sub_content1

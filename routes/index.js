@@ -1,23 +1,29 @@
 var express = require('express');
+var userAgent = require('../modules/device.js');
+var extend = require('extend');
 var router = express.Router();
+var l = console.log
 
 /* GET home page. */
 router.get('/', function(req, res) {
+
+  var isMovile = userAgent(req).isMovile()
   data = {
-    pretty:true
+    pretty:true,
+    isMovile:isMovile
   }
+
   if(req.session.user&&req.session.user.status){
     console.log("ya existe session de: "+ req.session.user.email)
     var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
-        //alto = (alto<600)?parseInt(alto)+100:alto;
-        data = {
-          user:{
-            email:req.session.user.email
-          },
-          ancho:ancho,
-          alto:alto
-        }
-    res.render('partials/objectBoardApp.jade',data)
+        data = extend(data,{
+                  user:{
+                    email:req.session.user.email
+                  },
+                  ancho:ancho,
+                  alto:alto
+                })
+    res.render('hojaBalance',data)
   }
   else{
     console.log("sesion nueva")
@@ -34,8 +40,7 @@ router.get('/pages/:page',function(req,res){
         data = {
             user:{
               email:req.session.user.email
-            },
-            foo:"bar"
+            }
           }
     }
 	 res.render(("%d.jade",page),data);

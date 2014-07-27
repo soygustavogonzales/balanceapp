@@ -1,6 +1,6 @@
 {
   "name": "movlimSystems",
-  "version": "0.0.1-8",
+  "version": "0.0.1-9",
   "main": "bin/www.js",
   "private": true,
   "scripts": {
@@ -12,8 +12,12 @@
   "subdomain": "movlimSystems",
   "keywords": [
     "movlimSystems",
-    "usmp-fia",
-    "contabilidad"
+    "nodejs",
+    "expressjs",
+    "angularjs",
+    "bootstrap",
+    "mongoDB",
+    "fullPage"
   ],
   "author": "Gustavo Gonzales",
   "license": "ISC",
@@ -25,7 +29,8 @@
     "body-parser": "~1.0.0",
     "express-session": "~1.6.0",
     "debug": "~0.7.4",
-    "jade": "~1.3.0"
+    "jade": "~1.3.0",
+    "extend": "~1.3.0"
   },
   "devDependencies": {
     "gulp-jsmin": "~0.1.4",
