@@ -1,6 +1,6 @@
 {
   "name": "movlimSystems",
-  "version": "0.0.1-9",
+  "version": "0.0.1-11",
   "main": "bin/www.js",
   "private": true,
   "scripts": {
@@ -30,15 +30,20 @@
     "express-session": "~1.6.0",
     "debug": "~0.7.4",
     "jade": "~1.3.0",
-    "extend": "~1.3.0"
+    "extend": "~1.3.0",
+    "mysql": "2.5.1"
   },
   "devDependencies": {
-    "gulp-jsmin": "~0.1.4",
-    "gulp-rename": "~1.2.0",
-    "gulp-csso": "~0.2.8",
     "gulp-coffee": "~1.4.2",
-    "gulp-util": "~2.2.14",
-    "gulp-livereload": "~1.3.1",
-    "gulp-connect": "~2.0.5"
+    "gulp-concat": "^2.4.1",
+    "gulp-connect": "~2.0.5",
+    "gulp-csso": "~0.2.8",
+    "gulp-jsmin": "~0.1.4",
+    "gulp-less": "^1.3.6",
+    "gulp-livereload": "^2.1.1",
+    "gulp-minify": "0.0.5",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-rename": "~1.2.0",
+    "gulp-util": "~2.2.14"
   }
 }

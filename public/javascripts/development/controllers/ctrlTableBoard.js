@@ -8,7 +8,7 @@ boardApp.controller('ctrlTableBoard',['$scope','svcCliente','$timeout',function 
 	var userDevice = JSON.parse(localStorage.balanceApp)
 	$scope.userDevice = userDevice
 
-	console.log("cargo el controller ctrlPrincipal")
+	//console.log("cargo el controller ctrlPrincipal")
 
 	$scope.sumas = {};
 	$scope.buscarFilter = function(){
