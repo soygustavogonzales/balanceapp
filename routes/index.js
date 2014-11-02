@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
     isMovile:isMovile
   }
 
-  if(req.session.user&&req.session.user.status){
+  if(req.session.user){
     console.log("ya existe session de: "+ req.session.user.email)
     var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
         data = extend(data,{
@@ -83,12 +83,11 @@ router.post('/users/login',function(req,res){
 
 router.get('/users/logout',function(req,res){
   var session = true;
-  req.session.user.status = false;
   req.session.destroy(function(){
     console.log("session destruida!!")
     session = false;
     //res.send(200,'<a href="/">volver al index</a>')
-    res.render('index')
+    res.redirect('/')
   })
   //if(!session)
 })

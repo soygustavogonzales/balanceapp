@@ -33,5 +33,7 @@ boardApp.directive('drvRefreshThumbDragDrop', [function(){
 					},false)
 
 		}//.link
+
+		
 	};//.return
 }]);
