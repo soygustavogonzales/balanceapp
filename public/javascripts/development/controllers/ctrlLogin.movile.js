@@ -22,19 +22,19 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 
 		}, function(data){
 			console.log("error en loggeo :")
-			console.log(data)
+			//console.log(data)
 			$scope.isLoggeoCorrect = false
 		})
 
 		$scope.$watch('isLoggeoCorrect',function(){
 
-				console.log("loggeo correcto? :"+(typeof $scope.isLoggeoCorrect))
+				//console.log("loggeo correcto? :"+(typeof $scope.isLoggeoCorrect))
 
-				if($scope.isLoggeoCorrect&&$scope.isLoggeoCorrect=='true'){//if loggeo exitoso
+				if($scope.isLoggeoCorrect&&$scope.isLoggeoCorrect==true){//if loggeo exitoso
 
-					console.log($scope.email)
-					console.log($scope.password)
-					console.log(balanceApp.userDevice)
+					//console.log($scope.email)
+					//console.log($scope.password)
+					//console.log(balanceApp.userDevice)
 
 					localStorage.balanceApp = JSON.stringify(balanceApp.userDevice)
 
@@ -42,11 +42,12 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 						pvrUserAgent.sendToBackendUserAgent(balanceApp.userDevice)
 						.done(function(data){
 								console.log("exito: "+data)
+								location.assign("/pages/hojaBalance")
 						})
 						.fail(function(data){
 								console.log("error :"+ data)
+								location.assign("/pages/hojaBalance")
 						})
-					location.assign("/pages/hojaBalance")
 				}//if loggeoCorrect
 		})
 		

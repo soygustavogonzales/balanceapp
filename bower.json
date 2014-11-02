@@ -5,17 +5,17 @@
   "authors": [
     "Gustavo <gustavo.gonda@gmail.com>"
   ],
-  "dependencies":{
-    "angular":"1.2.16",
-    "angular-route":"latest",
-    "jquery":"latest",
-    "jqueryui":"latest",
-    "flatstrap":"latest",
-    "fullpage.js":"latest",
-    "sidr":"latest",
-    "greensock":"latest",
-    "battatech_excelexport":"https://github.com/battatech/battatech_excelexport.git"
-    },
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "jquery": "latest",
+    "jqueryui": "latest",
+    "flatstrap": "latest",
+    "fullpage.js": "latest",
+    "sidr": "latest",
+    "greensock": "latest",
+    "battatech_excelexport": "https://github.com/battatech/battatech_excelexport.git"
+  },
   "description": "angular simple webapp",
   "keywords": [
     "angular",
@@ -23,5 +23,9 @@
     "express"
   ],
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "angular-touch": "~1.3.1",
+    "angular-gestures": "~0.2.3"
+  }
 }

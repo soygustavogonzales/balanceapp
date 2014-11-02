@@ -40,7 +40,9 @@ boardApp.controller('ctrlTableBoard',['$scope','svcCliente','$timeout',function 
      , datatype: $datatype.Table
    });
 	}
-	
+	$scope.swipeRight = function($event){
+		console.log($event)
+	}
 	$scope.sendNewArticle = function(){
 		//console.log($scope.formNewArticle.nameNewProduct.$modelValue) //captura el valor del campo con name= nameNewProduct
 		console.log($scope.formNewArticle)

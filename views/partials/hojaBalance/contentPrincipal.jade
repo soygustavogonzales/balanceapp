@@ -51,7 +51,7 @@
 						th.text-center: button(class="btn-danger",ng-click="eliminarVenta($index)").btn: i.glyphicon.glyphicon-remove
 		.main
 			ul.cbp_tmtimeline
-				li(ng-repeat="(key, venta) in tablaVentas| filter:search")
+				li(ng-repeat="(key, venta) in tablaVentas| filter:search",drv-swipe-item-article,data-index="{{$index}}")
 					time.cbp_tmtime(datetime="20-07-2014 18:30")
 						span|20-07-2014
 						span|18:30

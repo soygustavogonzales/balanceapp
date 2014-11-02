@@ -29,8 +29,9 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 		$scope.$watch('isLoggeoCorrect',function(){
 
 				console.log("loggeo correcto? :"+(typeof $scope.isLoggeoCorrect))
+				console.log("loggeo correcto? :"+ $scope.isLoggeoCorrect)
 
-				if($scope.isLoggeoCorrect&&$scope.isLoggeoCorrect=='true'){//if loggeo exitoso
+				if($scope.isLoggeoCorrect&&$scope.isLoggeoCorrect==true){//if loggeo exitoso
 
 					console.log($scope.email)
 					console.log($scope.password)
