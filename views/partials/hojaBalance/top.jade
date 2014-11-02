@@ -15,6 +15,6 @@
 					li: a.btn(class="default",ng-click="toExcel()"): i.glyphicon.glyphicon-floppy-save
 					li: a.btn.default(onclick="$('#modalNewArticle').modal('toggle')"): i.glyphicon.glyphicon-plus
 					li: a.btn.default(onclick="$('#modalSearchArticle').modal('toggle')"): i.glyphicon.glyphicon-search
-					if (user.email)
+					if (user&&user.email)
 						li: a.btn(href="#")| #{user.email}
 					li: a.btn(class="btn-danger",href="/users/logout"): i.glyphicon.glyphicon-off
