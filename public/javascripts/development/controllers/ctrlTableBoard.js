@@ -5,6 +5,7 @@ boardApp.controller('ctrlTableBoard',['$scope','svcCliente','$timeout',function 
 	$scope.fecha = svcCliente.clientDatos.fecha
 	$scope.html = svcCliente.contentHtml
 	$scope.tablaVentas = [];
+	$scope.imageNewArticle = "/images/loader.gif"
 	var userDevice = JSON.parse(localStorage.balanceApp)
 	$scope.userDevice = userDevice
 
@@ -39,13 +40,7 @@ boardApp.controller('ctrlTableBoard',['$scope','svcCliente','$timeout',function 
      , datatype: $datatype.Table
    });
 	}
-	$scope.changeNewPicture = function(){
-		console.log($('#formNewArticle input[name="pictureNewProduct"]').val())
-		console.log($scope.pictureNewProduct)
-	}
-	$scope.searchNewPicture = function(){
-		$('#formNewArticle .newPicture').trigger('click')	
-	}
+	
 	$scope.sendNewArticle = function(){
 		//console.log($scope.formNewArticle.nameNewProduct.$modelValue) //captura el valor del campo con name= nameNewProduct
 		console.log($scope.formNewArticle)

@@ -29,10 +29,9 @@
 							center.center-box.text-center
 								.col-sm-12
 									.thumbnails
-										.span4
-											a.thumbnail(href="#",ng-click="searchNewPicture()")
-												img(src="/images/photo.png")
-								input.hide.form-control.input-lg.newPicture(type="file",onchange="$('.picture-path').val($(this).val()); $('.picture-path').trigger('change')",name="newPicture",ng-model="ono")
-								input.hide.picture-path(type="text",ng-model="pictureNewProduct",name="pictureNewProduct",ng-change="changeNewPicture()",ng-disabled="true")
+										.span4(drv-refresh-thumb-drag-drop,ng-model="olo")
+											a.thumbnail(href="#",onclick="$('#formNewArticle .newPicture').trigger('click')")
+												img(src="{{imageNewArticle}}")
+								input.hide.form-control.input-lg.newPicture(type="file",drv-valid-file,drv-refresh-thumb,name="newPicture",ng-model="ono",required)
 				.modal-footer
 					button.btn.btn-lg.btn-primary(type="submit",ng-disabled="formNewArticle.$invalid")|guardar
