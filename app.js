@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
 var routes = require('./routes/index');
+var users = require('./routes/users');
 //var extend = require('extend')
 
 
@@ -26,6 +27,7 @@ var nroDays = 8, time = nroDays*24*3600*1000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/users', users);
 
 
 /// catch 404 and forwarding to error handler
