@@ -2,6 +2,7 @@ var express = require('express');
 var userAgent = require('../modules/device.js');
 var extend = require('extend');
 var router = express.Router();
+var fs = require('fs');
 var l = console.log
 
 /* GET home page. */
@@ -38,48 +39,66 @@ router.get('/', function(req, res) {
 });
 
 router.get('/pages/:page',function(req,res){
-	var page = req.params.page;
+  var isMovile = userAgent(req).isMovile()
+  var page = req.params.page;
   var data = {}
-		console.log("the page pages request:",page)
-    if(page=="hojaBalance"){
-      if(req.session.user)
-        data = {
-            user:{
-              email:req.session.user.email
+    console.log("the page pages request:",page)
+    switch(true){
+      case(page.toString()=="hojaBalance"):
+          if(req.session.user){
+            data = {
+              user:{
+                email:req.session.user.email
+              }
+            }
+           res.render(("%d.jade",page),data);
+          }
+          else{
+           res.redirect('/');
+          }
+
+      break;
+      default:
+        //res.render(("%d.jade",page),data);
+        fs.stat('./views/'+page+'.jade',function(err,stats){
+          ///media/ggonzales/DATA/GoogleDrive/Dropbox/PROYECTS/angular-webapp/views/
+          if(err){
+            l(err)
+            res.redirect('/');      
+          }else{
+            if(stats.isFile()){
+              res.render(("%d.jade",page))
+            }else{
+              res.redirect('/');      
             }
           }
+        })
     }
-	 res.render(("%d.jade",page),data);
-   /*
-  if(req.session.user){
-  }else{
-    res.redirect('/')
-  }
-   */
 })
 
 router.get('/partials/:page',function(req,res){
   var page = req.params.page;
-  var data = {pretty:true}
+  var data = {}
   var isMovile = userAgent(req).isMovile()
 
   switch(true){
     case (page=="objectBoardApp"):
-      if(req.session.user)
-        if(!isMovile){
+      /*Solo se puede acceder a esta pagina si se esta loggeado*/
+      if(req.session.user){//si esta loggeado
+        if(!isMovile){//esPc
           var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
           data = extend(data,{ancho:ancho,alto:alto})
         }
+        
+        res.render('partials/'+page,data);
+      }else{
+        res.redirect('/')
+      }
     break;
+    default:
+      res.render('partials/'+page,data);
   }
   console.log("the page partials request:",page)
-   res.render('partials/'+page,data);
-   /*
-  if(req.session.user){
-  }else{
-   res.redirect('/')
-  }
-   */
 })
 
 
