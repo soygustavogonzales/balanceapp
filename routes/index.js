@@ -60,13 +60,14 @@ router.get('/pages/:page',function(req,res){
       break;
       default:
         //res.render(("%d.jade",page),data);
+        /*Verificamos que la ruta sea la correcta con fs.stat*/
         fs.stat('./views/'+page+'.jade',function(err,stats){
           ///media/ggonzales/DATA/GoogleDrive/Dropbox/PROYECTS/angular-webapp/views/
           if(err){
             l(err)
             res.redirect('/');      
           }else{
-            if(stats.isFile()){
+            if(stats.isFile()){//verificamos que sea un archivo
               res.render(("%d.jade",page))
             }else{
               res.redirect('/');      
