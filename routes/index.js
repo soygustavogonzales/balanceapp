@@ -6,39 +6,39 @@ var fs = require('fs');
 var l = console.log
 
 /* GET home page. */
-router.get('/', function(req, res) {
+var home = (function(req,res){
+    var isMovile = userAgent(req).isMovile()
+    data = {
+      pretty:true,
+      isMovile:isMovile
+    }
 
-  var isMovile = userAgent(req).isMovile()
-  data = {
-    pretty:true,
-    isMovile:isMovile
-  }
-
-  if(req.session.user){
-    console.log("ya existe session de: "+ req.session.user.email)
-    /*
-    */
-      if(!isMovile&&req.session.user.userAgent&&req.session.user.userAgent.widthScreen&&req.session.user.userAgent.heightScreen){
-          var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
+    if(req.session.user){
+      console.log("ya existe session de: "+ req.session.user.email)
+      /*
+      */
+        if(!isMovile&&req.session.user.userAgent&&req.session.user.userAgent.widthScreen&&req.session.user.userAgent.heightScreen){
+            var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
+            data = extend(data,{
+                      ancho:ancho,
+                      alto:alto
+                    })
+        }
           data = extend(data,{
-                    ancho:ancho,
-                    alto:alto
-                  })
-      }
-        data = extend(data,{
-           user:{
-                  email:req.session.user.email
-                },
-        })
-    res.redirect('/pages/hojaBalance')
-  }
-  else{
-    console.log("sesion nueva")
-    res.render('index',data);
-  }
-});
+             user:{
+                    email:req.session.user.email
+                  },
+          })
+      res.redirect('/pages/hojaBalance')
+    }
+    else{
+      console.log("sesion nueva")
+      res.render('index',data);
+    }
+})
 
-router.get('/pages/:page',function(req,res){
+var otherPages = function(req,res){
+
   var isMovile = userAgent(req).isMovile()
   var page = req.params.page;
   var data = {}
@@ -75,9 +75,11 @@ router.get('/pages/:page',function(req,res){
           }
         })
     }
-})
 
-router.get('/partials/:page',function(req,res){
+}
+
+var partials = function(req,res){
+
   var page = req.params.page;
   var data = {}
   var isMovile = userAgent(req).isMovile()
@@ -100,45 +102,25 @@ router.get('/partials/:page',function(req,res){
       res.render('partials/'+page,data);
   }
   console.log("the page partials request:",page)
-})
+
+}
 
 
-router.post('/users/login',function(req,res){
-  var userEmail = req.body.email,
-  password = req.body.password;
+var userAgent_ = function(req,res){
 
-  if(userEmail == "root@gmail.com" && password == "12345"){
-    console.log("loggeo correcto de: "+ userEmail)
-
-    req.session.user = {
-      email:userEmail,
-      password:password,
-      status:true
-    }
-
-    res.send(200,true)
-
-  }
-  res.send(200,false)
-
-})
-
-router.get('/users/logout',function(req,res){
-  var session = true;
-  req.session.destroy(function(){
-    console.log("session destruida!!")
-    session = false;
-    //res.send(200,'<a href="/">volver al index</a>')
-    res.redirect('/')
-  })
-  //if(!session)
-})
-
-router.post('/userAgent',function(req,res){
   console.log(req.body)
-  if(req.session.user)
+  if(req.session.user){
     req.session.user.userAgent = req.body
-  res.send(200,true)
-})
+    res.send(200,true)
+  }else{
+    res.send(200,false)
+  }
+}
+
+router.get('/', home);
+router.get('/pages/:page',otherPages)
+router.get('/partials/:page',partials)
+router.post('/userAgent',userAgent_)//lanza error(?) cuando se usa una fuincion con el mismo nombre que la ruta.
+
 
 module.exports = router;
