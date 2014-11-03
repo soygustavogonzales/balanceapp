@@ -18,7 +18,7 @@ UserAgent.prototype.getUserAgent = function(){
 }
 UserAgent.prototype.sendToBackendUserAgent = function(userDevice){
 	//this es el objeto al que se hace referencia
-	if(userDevice||angular.isObject(userDevice))
+	if(userDevice&&angular.isObject(userDevice))
 		return $.post('/userAgent',userDevice);
 	return false
 }
