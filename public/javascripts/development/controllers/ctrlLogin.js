@@ -3,6 +3,7 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 	$scope.data = "";
 
 		svcBalance.cargarLoader().then(function(html){
+			/*cargamos el loader(archivo .gif)*/
 				svcBalance.contentHtml = html.data;
 				$('#section1 > .tableCell').html(svcBalance.contentHtml)
 
@@ -22,7 +23,7 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 
 		}, function(data){
 			console.log("error en loggeo :")
-			console.log(data)
+			alert("Usuario o clave incorrectos")
 			$scope.isLoggeoCorrect = false
 		})
 
@@ -35,7 +36,7 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 
 					console.log($scope.email)
 					console.log($scope.password)
-					console.log(balanceApp.userDevice)
+					console.log(balanceApp.userDevice)//userDevice: variable creada y asignada en balanceApp.config.js
 
 					localStorage.balanceApp = JSON.stringify(balanceApp.userDevice)
 
@@ -48,13 +49,14 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 								console.log("error :"+ data)
 						})
 
+					/*Scrolleamos la vista hacia abajo (pasamos del login -> hojaBalance)*/						
 					$.fn.fullpage.moveTo(2);//seccion 2
 					var timer = $timeout(function(){
 						
 						svcBalance.cargarTable().then(function(html){
 							svcBalance.contentHtml = html.data;
 
-							$('#section1 > .tableCell').html(svcBalance.contentHtml)
+							$('#section1 > .tableCell').html(svcBalance.contentHtml)/*cargamos el objeto objectBoardApp.jade*/
 						});
 						
 					},2500)
