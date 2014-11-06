@@ -3,25 +3,25 @@ var userAgent = require('../modules/device.js');
 var extend = require('extend');
 var router = express.Router();
 var fs = require('fs');
+var modelDispatcher = require('../model/divercity/modelDispatcher.js')
+
 var l = console.log
 
 var login = function(req,res){
   var userEmail = req.body.email,
   password = req.body.password;
-
-  if(userEmail == "root@gmail.com" && password == "12345"){
-    console.log("loggeo correcto de: "+ userEmail)
-
+  if(userEmail&&password){
     req.session.user = {
       email:userEmail,
-      password:password,
-      status:true
+      password:password
     }
-
-    res.send(200,true)
-
+    l(req.session.user)
+    res.send(200,true)    
   }
-  res.send(200,false)
+  else{
+    res.send(200,true)
+  }
+
 }
 
 var logout = function(req,res){
