@@ -23,13 +23,14 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 
 		}, function(data){
 			console.log("error en loggeo :")
+			console.log(data)
 			alert("Usuario o clave incorrectos")
 			$scope.isLoggeoCorrect = false
 		})
 
 		$scope.$watch('isLoggeoCorrect',function(){
 
-				console.log("loggeo correcto? :"+(typeof $scope.isLoggeoCorrect))
+				//console.log("loggeo correcto? :"+(typeof $scope.isLoggeoCorrect))
 				console.log("loggeo correcto? :"+ $scope.isLoggeoCorrect)
 
 				if($scope.isLoggeoCorrect&&$scope.isLoggeoCorrect==true){//if loggeo exitoso
