@@ -2,5 +2,5 @@ balanceApp.config(['pvrEfxProvider','pvrUserAgentProvider',function (efx,userAge
 	efx.oEfx.startFullPage();
 	balanceApp.userDevice = userAgent.userDevice.getUserAgent()
 
-	console.log(balanceApp.userDevice)
+	//console.log(balanceApp.userDevice)
 }])

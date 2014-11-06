@@ -17,7 +17,8 @@ modelDispatcher.getAllDispatchers = function(opt){
 
 modelDispatcher.getPassword = function(opt){
 	if(connection){
-		var query = ('SELECT pasDes FROM despachador WHERE UPPER(corDes) = UPPER("hsotomayor@gmail.com")');
+		var email = opt.email;
+		var query = ('SELECT pasDes FROM despachador WHERE UPPER(corDes) = UPPER("'+email+'")');
 			connection.query(query,function(err,rows){
 				if(err){
 					l(err.message);
@@ -33,20 +34,17 @@ modelDispatcher.getPassword = function(opt){
 
 modelDispatcher.isUserExists = function(opt){
 	if(connection){
-					//l("***");
 		//l(connection.escape(opt.email))
-		var query = ('SELECT idDes FROM despachador WHERE UPPER(corDes) = UPPER("hsotomayor@gmail.com")');
+		var email = opt.email;
+		var query = ('SELECT idDes FROM despachador WHERE UPPER(corDes) = UPPER("'+email+'")');
 			connection.query(query,function(err,rows){
-					//l("&&&");
 				if(err){
-					//l("<<");
 					l(err.message);
 					opt.callback(false)
 					throw err
 				}
 				else {
-					//l(">>");
-					//l(rows);
+					//l(rows)
 					if(rows.length>0)
 						opt.callback(true);
 					else

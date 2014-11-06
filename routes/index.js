@@ -14,11 +14,8 @@ var home = (function(req,res){
       pretty:true,
       isMovile:isMovile
     }
-    //modelProduct.getAllProducts();
     if(req.session.user){
       console.log("ya existe session de: "+ req.session.user.email)
-      /*
-      */
         if(!isMovile&&req.session.user.userAgent&&req.session.user.userAgent.widthScreen&&req.session.user.userAgent.heightScreen){
             var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
             data = extend(data,{
@@ -61,10 +58,8 @@ var otherPages = function(req,res){
 
       break;
       default:
-        //res.render(("%d.jade",page),data);
         /*Verificamos que la ruta sea la correcta con fs.stat*/
         fs.stat('./views/'+page+'.jade',function(err,stats){
-          ///media/ggonzales/DATA/GoogleDrive/Dropbox/PROYECTS/angular-webapp/views/
           if(err){
             l(err)
             res.redirect('/');      
@@ -110,9 +105,6 @@ var partials = function(req,res){
 
 var userAgent_ = function(req,res){
 
-  l("0////")
-  l(req.session)
-  l(req.session.user)
   if(req.session.user){
     req.session.user.userAgent = req.body
     res.send(200,true)

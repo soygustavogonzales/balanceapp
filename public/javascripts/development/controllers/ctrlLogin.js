@@ -17,13 +17,15 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 			password:$scope.password
 
 		}).then(function(rpta){
-			console.log("loggeo correcto: ")
-			console.log(rpta.data)
+			//console.log("loggeo correcto: ")
+			//console.log(rpta.data)
 			$scope.isLoggeoCorrect = rpta.data
+			if(!rpta.data)
+				alert("Usuario o clave incorrectos")
 
 		}, function(data){
-			console.log("error en loggeo :")
-			console.log(data)
+			//console.log("error en loggeo :")
+			//console.log(data)
 			alert("Usuario o clave incorrectos")
 			$scope.isLoggeoCorrect = false
 		})
@@ -31,23 +33,23 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 		$scope.$watch('isLoggeoCorrect',function(){
 
 				//console.log("loggeo correcto? :"+(typeof $scope.isLoggeoCorrect))
-				console.log("loggeo correcto? :"+ $scope.isLoggeoCorrect)
+				//console.log("loggeo correcto? :"+ $scope.isLoggeoCorrect)
 
 				if($scope.isLoggeoCorrect&&$scope.isLoggeoCorrect==true){//if loggeo exitoso
 
-					console.log($scope.email)
-					console.log($scope.password)
-					console.log(balanceApp.userDevice)//userDevice: variable creada y asignada en balanceApp.config.js
+					//console.log($scope.email)
+					//console.log($scope.password)
+					//console.log(balanceApp.userDevice)//userDevice: variable creada y asignada en balanceApp.config.js
 
 					localStorage.balanceApp = JSON.stringify(balanceApp.userDevice)
 
 					if(pvrUserAgent)
 						pvrUserAgent.sendToBackendUserAgent(balanceApp.userDevice)
 						.done(function(data){
-								console.log("exito: "+data)
+								console.log("exito en logeo?: "+data)
 						})
 						.fail(function(data){
-								console.log("error :"+ data)
+								console.log("error en loggeo :"+ data)
 						})
 
 					/*Scrolleamos la vista hacia abajo (pasamos del login -> hojaBalance)*/						

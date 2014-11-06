@@ -26,6 +26,15 @@
 									span.input-group-addon: i.glyphicon.glyphicon-th-large
 									input.form-control.input-lg(ng-model="stockNewProduct",name="stockNewProduct",type="number",placeholder="stock",required)
 						.row.top-buffer
+							.col-sm-6
+								.input-group
+									span.input-group-addon: i.glyphicon.glyphicon-sort-by-alphabet
+									input.form-control.input-lg(ng-model="estNewProduct",name="estNewProduct",placeholder="estante",required)
+							.col-sm-6
+								.input-group
+									span.input-group-addon: i.glyphicon.glyphicon-sort-by-order
+									input.form-control.input-lg(ng-model="levelNewProduct",name="levelNewProduct",type="number",placeholder="nivel en estante",required)
+						.row.top-buffer
 							center.center-box.text-center
 								.col-sm-12
 									.thumbnails
