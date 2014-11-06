@@ -3,7 +3,9 @@ var userAgent = require('../modules/device.js');
 var extend = require('extend');
 var router = express.Router();
 var fs = require('fs');
-var l = console.log
+var l = console.log;
+//l(__dirname)
+var modelProduct = require('../model/divercity/modelProduct.js')
 
 /* GET home page. */
 var home = (function(req,res){
@@ -12,7 +14,7 @@ var home = (function(req,res){
       pretty:true,
       isMovile:isMovile
     }
-
+    //modelProduct.getAllProducts();
     if(req.session.user){
       console.log("ya existe session de: "+ req.session.user.email)
       /*
@@ -108,7 +110,9 @@ var partials = function(req,res){
 
 var userAgent_ = function(req,res){
 
-  console.log(req.body)
+  l("0////")
+  l(req.session)
+  l(req.session.user)
   if(req.session.user){
     req.session.user.userAgent = req.body
     res.send(200,true)
