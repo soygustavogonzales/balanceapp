@@ -8,4 +8,5 @@ tsa.pub
 #a los degub
 *.log
 *.debug
-
+#imagenes no pertenecientes al sistema, sino mas bien a los usuarios registrados
+public/images/productos/

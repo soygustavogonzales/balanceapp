@@ -1,7 +1,7 @@
 #modalSearchArticle.modal.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
 	.modal-dialog
 		.modal-content
-			form(id="", method="", action="")
+			form(id="formSearchProduct",name="formSearchProduct",ng-submit="removeProducto()",novalidate)
 				.modal-header
 					button.close(type="button",data-dismiss="modal",aria-hidden="true")|&times;
 					h4.modal-title#myModalLabel|Buscar articulo
@@ -9,30 +9,39 @@
 					.row.top-buffer
 						.col-sm-12
 							.input-group
-								input.input-lg.form-control(ng-model="search",placeholder="codigo del articulo")
+								input.input-lg.form-control(ng-model="codSearchPro",name="codSearchPro",placeholder="codigo del articulo")
 								span.input-group-btn
-									button(type="button").btn.btn-lg.btn-default: i.glyphicon.glyphicon-search
+									button(type="button",ng-click="searchProductByCod()").btn.btn-lg.btn-default: i.glyphicon.glyphicon-search
 					.row.top-buffer
 						.col-sm-12
 							.input-group
-								span.input-group-addon: i.glyphicon.glyphicon-barcode
-								input.form-control.input-lg(ng-model="nombreProducto",placeholder="nombre")
+								span.input-group-addon: i.glyphicon.glyphicon-shopping-cart
+								input.form-control.input-lg(ng-model="nameSearchPro",name="nameSearchPro",placeholder="nombre",ng-disabled="true")
 					.row.top-buffer
 						.col-sm-6
 							.input-group
 								span.input-group-addon: i.glyphicon.glyphicon-usd
-								input.form-control.input-lg(ng-model="precioProducto",placeholder="precio")
+								input.form-control.input-lg(ng-model="priceSearchPro",name="priceSearchPro",placeholder="precio",ng-disabled="true")
 						.col-sm-6
 							.input-group
 								span.input-group-addon: i.glyphicon.glyphicon-th-large
-								input.form-control.input-lg(ng-model="stockProducto",placeholder="stock")
+								input.form-control.input-lg(ng-model="stockSearchPro",name="stockSearchPro",placeholder="stock",ng-disabled="true")
+					.row.top-buffer
+						.col-sm-6
+							.input-group
+								span.input-group-addon: i.glyphicon.glyphicon-sort-by-alphabet
+								input.form-control.input-lg(ng-model="estanteSearchPro",name="estanteSearchPro",placeholder="estante",ng-disabled="true")
+						.col-sm-6
+							.input-group
+								span.input-group-addon: i.glyphicon.glyphicon-sort-by-order
+								input.form-control.input-lg(ng-model="levelSearchPro",name="levelSearchPro",placeholder="nivel",ng-disabled="true")
 					.row.top-buffer
 						center.center-box.text-center
 							.col-sm-12
 								.thumbnails
 									.span4
 										a.thumbnail(href="#")
-											img(src="/images/photo.png")
-							input.hide.form-control.input-lg(type="file",ng-model="fotoProducto",placeholder="stock")
+											img(src="/images/photo.png",ng-disabled="true")
+							input.hide.form-control.input-lg(type="file",ng-model="fotoProducto",placeholder="stock",ng-disabled="true")
 				.modal-footer
 					button.btn.btn-lg.btn-danger|Eliminar articulo

@@ -26,14 +26,21 @@
 									span.input-group-addon: i.glyphicon.glyphicon-th-large
 									input.form-control.input-lg(ng-model="stockNewProduct",name="stockNewProduct",type="number",placeholder="stock",required)
 						.row.top-buffer
-							.col-sm-6
+							.col-sm-4
 								.input-group
 									span.input-group-addon: i.glyphicon.glyphicon-sort-by-alphabet
-									input.form-control.input-lg(ng-model="estNewProduct",name="estNewProduct",placeholder="estante",required)
-							.col-sm-6
+									select.form-control.input-lg(ng-model="estNewProduct",ng-options="estante.denEst for estante in estantes",name="estNewProduct",ng-focus="chargeEstantes()",required)
+										//option(ng-repeat="estante in estantes",value="{{estante.idEst}}")|{{estante.denEst}}
+							.col-sm-4
 								.input-group
 									span.input-group-addon: i.glyphicon.glyphicon-sort-by-order
-									input.form-control.input-lg(ng-model="levelNewProduct",name="levelNewProduct",type="number",placeholder="nivel en estante",required)
+									select.form-control.input-lg(ng-model="levelNewProduct",ng-options="level.denNiv for level in levels",name="levelNewProduct",ng-focus="chargeLevels()",required)
+										//option(ng-repeat="level in levels")
+							.col-sm-4
+								.input-group
+									span.input-group-addon: i.glyphicon.glyphicon-sort-by-alphabet
+									select.form-control.input-lg(ng-model="categoryNewProduct",ng-options="category.denCat for category in categories",name="categoryNewProduct",ng-focus="chargeCategories()",required)
+										//option(ng-repeat="category in categories")
 						.row.top-buffer
 							center.center-box.text-center
 								.col-sm-12
@@ -41,6 +48,6 @@
 										.span4(drv-refresh-thumb-drag-drop,ng-model="olo")
 											a.thumbnail(href="#",onclick="$('#formNewArticle .newPicture').trigger('click')")
 												img(src="{{imageNewArticle}}")
-								input.hide.form-control.input-lg.newPicture(type="file",drv-valid-file,drv-refresh-thumb,name="newPicture",ng-model="ono",required)
+								input.hide.form-control.input-lg.newPicture(type="file",drv-valid-file,drv-refresh-thumb,name="imageNewArticle",ng-model="imageNewArticle",required)
 				.modal-footer
 					button.btn.btn-lg.btn-primary(type="submit",ng-disabled="formNewArticle.$invalid")|guardar

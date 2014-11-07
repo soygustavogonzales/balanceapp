@@ -19,7 +19,7 @@ boardApp.directive('drvRefreshThumb', [function(){
 											}						
 										})(file)
 						reader.readAsDataURL(file)
-
+						
 					}else{
 						alert("Solo puede seleccionar imagenes(.jpg , .png)")
 					}
