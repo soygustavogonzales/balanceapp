@@ -21,14 +21,14 @@ boardApp.service('svcCliente', [function () {
 				            console.log($(this).attr("name"))
 				            console.log($(this)[0].files[0])
 				            formData.append($(this).attr("name"), $(this)[0].files[0]);
-				            formData.append('data-id',"111222")
+				            //formData.append('data-id',"111222")
 				            // do the ajax request
 				            console.log("formData>>")
 				            console.log(formData)
 				            $.ajax({
 				                url: remote,
 				                type: 'POST',
-				                data: formData,
+				                data:formData,
 				                dataType: "json",
 				                cache: false,
 				                contentType: false,

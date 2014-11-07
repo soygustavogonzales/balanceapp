@@ -11,16 +11,21 @@ var l = console.log
 var savePicture = function(req,res){
 	l("upload picture")
 	var form = new multiparty.Form();
-	l(req)
 	form.parse(req,function(err,fields,files){
-		l("images >>>")
-		l(files)
-		l(files.imageNewArticle)
-		l(files.imageNewArticle[0])
-		l(files.imageNewArticle[0].originalFilename)
-			var temPath = files.imageNewArticle[0].path;
-			var name = files.imageNewArticle[0].originalFilename;
-			//l(name)
+		//l("images >>>")
+		//l(files)
+		//l(files.imageNewArticle)
+		//l(files.imageNewArticle[0])
+		//l(files.imageNewArticle[0].originalFilename)
+		var count = 0;
+		for(file in files){
+			count++;
+			//l(file+">>>>")
+			//l(files[file][0].path)
+			//l(files[file][0].originalFilename)
+			var temPath = files[file][0].path;
+			var name = file;
+			l(name)
 			fs.readFile(temPath,function(err,data){
 					var path = "./public/images/productos/"+name;
 					fs.writeFile(path,data,function(err){
@@ -28,14 +33,18 @@ var savePicture = function(req,res){
 							l(err)
 						}else{
 							l("upload Succes")
-							res.send("Upload Succes")
+							//res.send("Upload Succes")
+							res.send(200,true)
 						}
 					})
-			})
-			/*
-			*/
+			});
+			if(count>0)break;
+			//res.send(200,true)
+		}
+		/*
+		*/
+
 	})
-	res.send(200,true)
 }
 
 var saveNewProduct = function(req,res){

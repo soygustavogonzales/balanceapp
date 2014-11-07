@@ -48,6 +48,6 @@
 										.span4(drv-refresh-thumb-drag-drop,ng-model="olo")
 											a.thumbnail(href="#",onclick="$('#formNewArticle .newPicture').trigger('click')")
 												img(src="{{imageNewArticle}}")
-								input.hide.form-control.input-lg.newPicture(type="file",drv-valid-file,drv-refresh-thumb,name="imageNewArticle",ng-model="imageNewArticle",required)
+								input.hide.form-control.input-lg.newPicture(type="file",drv-valid-file,drv-refresh-thumb,name="{{codeNewProduct}}",ng-model="imageNewArticle",required)
 				.modal-footer
 					button.btn.btn-lg.btn-primary(type="submit",ng-disabled="formNewArticle.$invalid")|guardar
