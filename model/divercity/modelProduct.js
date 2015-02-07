@@ -3,8 +3,44 @@ var connection = require(__dirname+'/divercity.connection.js');
 var l = console.log;
 var modelProduct = new Object();
 
+modelProduct.savePictureFromNewProductByCod = function(opt){
+	if(connection){
+
+		var query = 'UPDATE producto SET fotProd = "'+opt.fotProd + '" WHERE codProd = '+opt.codProd;
+		l(query)
+		//var query = 'UPDATE producto SET fotProd = "/public/imgs/foto1.jpg" WHERE codProd = 1510201020';
+			connection.query(query,function(err,result){
+			if(err)	{
+				l("error al guardar la imagen en la BD")
+				l(err.message);
+			}
+			else{
+				l(result);//arroja un array con las tuplas en formato JSON
+				opt.callback(result.insertId);
+			}
+		})
+	}
+
+}
+
+modelProduct.getPictureByCod = function(opt){
+	if(connection){
+			var query = "SELECT fotProd FROM producto WHERE idProd = "+opt.idProd;
+			connection.query(query,function(err,rows){
+			if(err)	
+				l(err.message);
+			else{
+				if(rows.length>0)
+					opt.callback(rows[0].fotProd);//arroja un array con las tuplas en formato JSON
+				else
+					opt.callback(null)
+			}
+		})
+	}	
+}
+
 modelProduct.getAllProducts = function(callback){
-		if(connection){
+	if(connection){
 			connection.query("SELECT * FROM producto",function(err,rows){
 			if(err)	
 				l(err.message);
