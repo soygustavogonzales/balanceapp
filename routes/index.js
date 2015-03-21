@@ -3,12 +3,14 @@ var userAgent = require('../modules/device.js');
 var extend = require('extend');
 var router = express.Router();
 var fs = require('fs');
+var ejs = require('ejs');
 var l = console.log;
+var read = fs.readFileSync;
 //l(__dirname)
 var modelProduct = require('../model/divercity/modelProduct.js')
 
 /* GET home page. */
-var home = (function(req,res){
+var home = function(req,res){
     var isMovile = userAgent(req).isMovile()
     data = {
       pretty:true,
@@ -32,9 +34,14 @@ var home = (function(req,res){
     }
     else{
       console.log("sesion nueva")
-      res.render('index',data);
+      //res.render('index',data);
+      //var users = ['geddy', 'neil', 'alex'];
+      //console.log(ejs)
+      //console.log(ejs.compile('<%= users %>')({users:users}))
+      //console.log(ejs.compile(read('./views/web/index.ejs','utf-8'))())
+      res.send(ejs.compile(read('./views/web/index.ejs','utf-8'))())
     }
-})
+}
 
 var otherPages = function(req,res){
 
@@ -113,7 +120,11 @@ var userAgent_ = function(req,res){
   }
 }
 
+var login = function(req,res){
+ res.send(ejs.compile(read('./views/web/login.ejs','utf-8'))())
+}
 router.get('/', home);
+router.get('/login',login);
 router.get('/pages/:page',otherPages)
 router.get('/partials/:page',partials)
 router.post('/userAgent',userAgent_)//lanza error(?) cuando se usa una fuincion con el mismo nombre que la ruta.

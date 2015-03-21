@@ -1,0 +1,22 @@
+.slider {
+	background: rgba(50,50,50,.2);
+}
+
+.slider .slider-left {
+		color:white;
+}
+.slider .slider-left > p,span{
+	color: white;
+}
+.slider-left input[type="submit"]{
+	width: 252px;
+}
+.slider .slider-left .degrade {
+	font-size: .8em;
+	color:rgba(255,255,255,.6);
+}
+
+.link:active,.link:focus,.link:link,.link:hover,.link:visited{
+	color: #86C840;
+	text-decoration: underline;
+}

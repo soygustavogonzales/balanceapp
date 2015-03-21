@@ -8,6 +8,7 @@ var session = require('express-session')
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var product = require('./routes/product');
+var ejs = require('ejs');
 //var extend = require('extend')
 
 
