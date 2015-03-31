@@ -1,6 +1,8 @@
 balanceapp
 ==========
 
-Este es repositorio de codigo del Proyecto final de contabilidad de la Universidad.
+This repository of open source project purchases and sales.
 
-by @gagdgonda
+Created by Gustavo Gonzales and Bryan Solis Mclellan
+
+by @gagdgonda on twitter
