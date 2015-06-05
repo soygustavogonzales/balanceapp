@@ -15,7 +15,8 @@
     "sidr": "latest",
     "greensock": "latest",
     "battatech_excelexport": "https://github.com/battatech/battatech_excelexport.git",
-    "Chart.js": "~1.0.2"
+    "Chart.js": "~1.0.2",
+    "hightcharts": "~4.1.5"
   },
   "description": "angular simple webapp",
   "keywords": [
