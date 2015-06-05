@@ -9,23 +9,11 @@ balanceApp.controller('ctrlLogin',['pvrUserAgent','$scope','$timeout','svcBalanc
 		});
 
 	$scope.submitForm = function(){
-		$scope.isLoggeoCorrect = false
-		$http.post('/users/login',{
 
-			email:$scope.email,
-			password:$scope.password
-
-		}).then(function(rpta){
-			console.log("loggeo correcto: ")
-			console.log(rpta.data)
-			$scope.isLoggeoCorrect = rpta.data
-
-		}, function(data){
-			console.log("error en loggeo :")
-			alert("Usuario o clave incorrectos")
-			$scope.isLoggeoCorrect = false
-		})
-
+		if($scope.email == "admin@gmail.com" && $scope.password == "12345"){
+			$scope.isLoggeoCorrect = true
+		}
+		
 		$scope.$watch('isLoggeoCorrect',function(){
 
 				//console.log("loggeo correcto? :"+(typeof $scope.isLoggeoCorrect))

@@ -5,10 +5,13 @@ html(ng-app="boardApp")
 			meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 			link(rel='stylesheet', href='/bower_components/flatstrap/dist/css/bootstrap.custom.css')
 			link(rel='stylesheet', href='/stylesheets/css/development/boardApp.css')
-		body()
+		body
 			block content
 			block import
 				script(src="/bower_components/jquery/dist/jquery.min.js")
+				script(src="/bower_components/Chart.js/Chart.min.js")
+				script(src="http://code.highcharts.com/highcharts.js")
+				script(src="http://code.highcharts.com/modules/exporting.js")
 				script(src="/bower_components/battatech_excelexport/Scripts/jquery.battatech.excelexport.js")
 				script(src="/bower_components/flatstrap/dist/js/bootstrap.min.js")
 				script(src="/javascripts/development/efecto2.js")
@@ -22,6 +25,8 @@ html(ng-app="boardApp")
 				script(src="/javascripts/development/directives/drvRefreshThumb.js")
 				script(src="/javascripts/development/directives/drvRefreshThumbDragDrop.js")
 				script(src="/javascripts/development/directives/drvSwipeItemArticle.js")
+				script(src="/javascripts/development/directives/drvLinearGraph.js")
 				script(src="/javascripts/development/controllers/ctrlTableBoard.js")
+				script(src="/javascripts/development/controllers/ctrlSalesList.js")
 
 				block sub_content1
