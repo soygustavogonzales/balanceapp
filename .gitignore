@@ -4,7 +4,7 @@ tsa.pub
 #nunca dejes de observar y dar seguimiento a .gitignore por favor
 !.gitignore
 #todos los archivos que terminen en _ con cualquier extension
-*_.*
+#*_.*
 #a los degub
 *.log
 *.debug
