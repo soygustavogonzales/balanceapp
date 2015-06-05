@@ -1,0 +1,38 @@
+extends layouts/layoutBalance
+block content
+	div
+		include partials/hojaBalance/top
+		#content-principal
+			.container
+				.row
+					#titulos
+						h3|Reportes {{fecha}}
+				.row
+					#reports
+						.row(ng-controller="ctrlSalesList")
+							.col-sm-12
+								hr
+								h3|Estas fueron las ventas de hoy : </br>
+							//sales list
+							.main
+								ul.cbp_tmtimeline
+									li(ng-repeat="(key, venta) in tablaVentas| filter:search",drv-swipe-item-article,data-index="{{$index}}")
+										time.cbp_tmtime(datetime="20-07-2014 {{venta.hora}}")
+											span|20-07-2014
+											span|{{venta.hora}}
+										.cbp_tmicon.cbp_tmicon-phone
+										.cbp_tmlabel
+											ul
+												li|{{venta.nombreProducto}},{{venta.precio}},{{venta.cantidad}},{{venta.cliente}} </br> Vendido por : <span style="font-size:.8em;font-style:italic;font-weight:bold;">{{venta.vendedor}}</span>
+
+						.row
+							.col-sm-12
+								hr
+								h3|¿Cómo van las ventas del día? : </br>
+								drv-linear-graph
+						.row
+							.col-sm-12
+								hr
+								h3|¿Quiénes venden más?: </br>
+								drv-pie-graph
+

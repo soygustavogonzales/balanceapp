@@ -44,27 +44,24 @@ var otherPages = function(req,res){
     console.log("the page pages request:",page)
     switch(true){
       case(page.toString()=="hojaBalance"):
-          if(req.session.user){
             data = {
               user:{
-                email:req.session.user.email
+                email:"admin@gmail.com"
               }
             }
+            console.log(data)
            res.render(("%d.jade",page),data);
-          }
-          else{
-           res.redirect('/');
-          }
-
       break;
       default:
         /*Verificamos que la ruta sea la correcta con fs.stat*/
         fs.stat('./views/'+page+'.jade',function(err,stats){
+
           if(err){
             l(err)
             res.redirect('/');      
           }else{
             if(stats.isFile()){//verificamos que sea un archivo
+              console.log(page)
               res.render(("%d.jade",page))
             }else{
               res.redirect('/');      
@@ -84,16 +81,8 @@ var partials = function(req,res){
   switch(true){
     case (page=="objectBoardApp"):
       /*Solo se puede acceder a esta pagina si se esta loggeado*/
-      if(req.session.user){//si esta loggeado
-        if(!isMovile){//esPc
-          var ancho = req.session.user.userAgent.widthScreen,alto = req.session.user.userAgent.heightScreen;
-          data = extend(data,{ancho:ancho,alto:alto})
-        }
-        
+          
         res.render('partials/'+page,data);
-      }else{
-        res.redirect('/')
-      }
     break;
     default:
       res.render('partials/'+page,data);
