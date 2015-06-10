@@ -1,0 +1,43 @@
+extends layouts/layoutBalance
+block content
+	div
+		include partials/hojaBalance/top
+		#content-principal
+			.container
+				.row
+					#titulos
+						h3|Configuraciones
+				.row
+					#setup
+						.row
+							hr
+							.row
+								h4|Datos de la empresa
+							.row
+								.col-sm-12
+									input.form-control.input-lg(placeholder="nombre",ng-model="nameEnterprise")
+								.col-sm-12
+									input.form-control.input-lg(placeholder="rubro",ng-model="nameEnterprise")
+								.col-sm-12
+									input.form-control.input-lg(placeholder="ruc",ng-model="nameEnterprise")
+								.col-sm-12
+									input.form-control.input-lg(placeholder="telefono",ng-model="nameEnterprise")
+							hr
+							.row
+								h4|Empleados
+							.row
+								.col-sm-12
+									input.form-control.input-lg(placeholder="nombre",ng-model="nameEnterprise")
+								.col-sm-12
+									input.form-control.input-lg(placeholder="apellido",ng-model="nameEnterprise")
+								.col-sm-12
+									input.form-control.input-lg(placeholder="email",ng-model="nameEnterprise")
+								.col-sm-12
+									input.form-control.input-lg(placeholder="telefono",ng-model="nameEnterprise")
+								.col-sm-12
+									.text-right.btn: ins|Agregar otro empleado
+
+
+							hr
+							.row
+							.col-sm-6

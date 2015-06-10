@@ -1,0 +1,36 @@
+extends layouts/layoutBalance
+block content
+	div
+		include partials/hojaBalance/top
+		#content-principal
+			.modal-dialog
+				.modal-content
+					form(id="formNewArticle",name="formNewArticle",ng-submit="sendNewArticle()",novalidate)
+						.row
+							.col-sm-12
+								.input-group
+									span.input-group-addon: i.glyphicon.glyphicon-shopping-cart
+									input.form-control.input-lg(ng-model="nameNewProduct",name="nameNewProduct",placeholder="nombre del articulo",required)
+						.row.top-buffer
+							.col-sm-12
+								.input-group
+									span.input-group-addon: i.glyphicon.glyphicon-barcode
+									input.form-control.input-lg(ng-model="codeNewProduct",name="codeNewProduct",placeholder="codigo de barras del articulo",required)
+						.row.top-buffer
+							.col-sm-6
+								.input-group
+									span.input-group-addon: i.glyphicon.glyphicon-usd
+									input.form-control.input-lg(ng-model="priceNewProduct",name="priceNewProduct",placeholder="precio",required)
+							.col-sm-6
+								.input-group
+									span.input-group-addon: i.glyphicon.glyphicon-th-large
+									input.form-control.input-lg(ng-model="stockNewProduct",name="stockNewProduct",type="number",placeholder="stock",required)
+						.row.top-buffer
+							center.center-box.text-center
+								.col-sm-12
+									.thumbnails
+										.span4(drv-refresh-thumb-drag-drop,ng-model="olo")
+											a.thumbnail(href="#",onclick="$('#formNewArticle .newPicture').trigger('click')")
+												img(src="{{imageNewArticle}}")
+								input.hide.form-control.input-lg.newPicture(type="file",drv-valid-file,drv-refresh-thumb,name="{{codeNewProduct}}",ng-model="imageNewArticle",required)
+								button.btn.btn-lg.btn-primary(type="submit",ng-disabled="formNewArticle.$invalid")|guardar
