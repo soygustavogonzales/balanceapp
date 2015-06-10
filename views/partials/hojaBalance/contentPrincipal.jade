@@ -1,61 +1,69 @@
 #content-principal
 	.container
-		.row
-			#titulos
-				h3()|{{fecha}}
-				hr
-	#enterData
-		.row(ng-init="buscar = false;columnsRow = 'col-sm-1'")
-			.grupo1(ng-show="!buscar")
+		#titulos
+			.row
+				.col-sm-9
+					h4.pull-left|Ventas del {{fecha}}
 				.col-sm-3
-					.input-group
-						span.input-group-addon: i.glyphicon.glyphicon-shopping-cart
-						input.form-control.input-lg(ng-model="nombreProducto",placeholder="¿Qué despache?")
-				.col-sm-2
-					.input-group
-						span.input-group-addon: i.glyphicon.glyphicon-cloud
-						input.form-control.input-lg(ng-model="cantidad",placeholder="¿Cuántos vendí?")
-				.col-sm-2
-					.input-group
-						span.input-group-addon: i.glyphicon.glyphicon-usd
-						input.form-control.input-lg(ng-model="precio",placeholder="¿A cuánto le deje?")
-				.col-sm-3
-					.input-group
-						span.input-group-addon: i.glyphicon.glyphicon-user
-						input.form-control.input-lg(ng-model="cliente",placeholder="¿Quién es mi cliente?")
-				.col-sm-1
-					button(ng-click="agregarVenta()").btn.btn-default.btn-lg.btn-block: i.glyphicon.glyphicon-plus-sign
-			.grupo2
-				div(ng-class="columnsRow")
-					.input-group
-						input.form-control.input-lg(ng-model="search",ng-show="buscar",placeholder="indique nombre del cliente o nombre del producto")
-						span.input-group-btn
-							button(ng-click="buscarFilter()").btn.btn-default.btn-lg.btn-block: i.glyphicon.glyphicon-search
+					a.pull-right.btn.text-muted(ng-click="toExcel()"): i.glyphicon.glyphicon-floppy-save
 		hr
-	#tabla
-		.content(style="display:none;")
-			table.table(id="tableExport",class="table-hover table-responsive table-striped")
-				thead
-					tr.success
-						th()|¿Que despaché?
-						th()|¿A cuanto?
-						th()|¿La cantidad?
-						th()|Mi cliente es
-						th(colspan="1"): i(class="glyphicon glyphicon-cog")
-				tbody
-					tr(ng-repeat="(key, venta) in tablaVentas| filter:search")
-						th|{{venta.nombreProducto}}
-						th|{{venta.precio}}
-						th|{{venta.cantidad}}
-						th|{{venta.cliente}}
-						th.text-center: button(class="btn-danger",ng-click="eliminarVenta($index)").btn: i.glyphicon.glyphicon-remove
-		.main
-			ul.cbp_tmtimeline
-				li(ng-repeat="(key, venta) in tablaVentas| filter:search",drv-swipe-item-article,data-index="{{$index}}")
-					time.cbp_tmtime(datetime="20-07-2014 18:30")
-						span|20-07-2014
-						span|18:30
-					.cbp_tmicon.cbp_tmicon-phone
-					.cbp_tmlabel
-						ul
-							li|{{venta.nombreProducto}},{{venta.precio}},{{venta.cantidad}},{{venta.cliente}}
+		#enterData
+			.row(ng-init="buscar = false;columnsRow = 'col-sm-1'")
+				.grupo1(ng-show="!buscar")
+					.col-sm-3
+						.input-group
+							span.input-group-addon: i.glyphicon.glyphicon-shopping-cart
+							input.form-control.input-lg(ng-model="nombreProducto",placeholder="¿Qué despache?")
+					.col-sm-2
+						.input-group
+							span.input-group-addon: i.glyphicon.glyphicon-cloud
+							input.form-control.input-lg(ng-model="cantidad",placeholder="¿Cuántos vendí?")
+					.col-sm-2
+						.input-group
+							span.input-group-addon: i.glyphicon.glyphicon-usd
+							input.form-control.input-lg(ng-model="precio",placeholder="¿A cuánto le deje?")
+					.col-sm-3
+						.input-group
+							span.input-group-addon: i.glyphicon.glyphicon-user
+							input.form-control.input-lg(ng-model="cliente",placeholder="¿Quién es mi cliente?")
+					.col-sm-1
+						button(ng-click="agregarVenta()").btn.btn-default.btn-lg.btn-block: i.glyphicon.glyphicon-plus-sign
+				.grupo2
+					div(ng-class="columnsRow")
+						.input-group
+							input.form-control.input-lg(ng-model="search",ng-show="buscar",placeholder="indique nombre del cliente o nombre del producto")
+							span.input-group-btn
+								button(ng-click="buscarFilter()").btn.btn-default.btn-lg.btn-block: i.glyphicon.glyphicon-search
+			.row
+				.col-sm-9
+				.col-sm-3
+					.text-right.btn: ins|<i class="glyphicon glyphicon-shopping-cart"></i>agregar otro artículo a la canasta
+			hr
+		//el contenido de esta tabla sera la que se exportara
+		#tabla
+			.content(style="display:none;")
+				table.table(id="tableExport",class="table-hover table-responsive table-striped")
+					thead
+						tr.success
+							th()|¿Que despaché?
+							th()|¿A cuanto?
+							th()|¿La cantidad?
+							th()|Mi cliente es
+							th(colspan="1"): i(class="glyphicon glyphicon-cog")
+					tbody
+						tr(ng-repeat="(key, venta) in tablaVentas| filter:search")
+							th|{{venta.nombreProducto}}
+							th|{{venta.precio}}
+							th|{{venta.cantidad}}
+							th|{{venta.cliente}}
+							th.text-center: button(class="btn-danger",ng-click="eliminarVenta($index)").btn: i.glyphicon.glyphicon-remove
+			.main
+				ul.cbp_tmtimeline
+					li(ng-repeat="(key, venta) in tablaVentas| filter:search",drv-swipe-item-article,data-index="{{$index}}")
+						time.cbp_tmtime(datetime="{{fecha}}")
+							span|{{fecha}}
+							span|18:30
+						.cbp_tmicon.cbp_tmicon-phone
+						.cbp_tmlabel
+							ul
+								li|{{venta.nombreProducto}},{{venta.precio}},{{venta.cantidad}},{{venta.cliente}}

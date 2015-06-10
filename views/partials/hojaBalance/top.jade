@@ -7,22 +7,27 @@
 					i.icon-bar
 					i.icon-bar
 				a.navbar-brand(href="#")
-					|LimeLight
+					strong|LimeLight
+					if (user&&user.email)
+						.row
+							.col-md-4.col-centered.small
+								small: em|#{user.email}
 			.navbar-collapse.collapse
 				ul.nav.navbar-nav
-					li: a#menu(href="/pages/hojaBalance")
-										i(class="glyphicon glyphicon-wrench")
-					li: a.btn.default(ng-click="toExcel()"): i.glyphicon.glyphicon-floppy-save
-					li: a.btn.default(onclick="$('#modalNewArticle').modal('toggle')"): i.glyphicon.glyphicon-plus
-					li: a.btn.default(onclick="$('#modalSearchArticle').modal('toggle')"): i.glyphicon.glyphicon-search
+					li.text-left
+						a.btn.default(href="/pages/setup")
+							i.glyphicon.glyphicon-wrench
+							|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuraciones
 					li
-						a.btn-default(href="/pages/hojaBalance")
+						a.btn.default(href="/pages/shopping")
+							i.glyphicon.glyphicon-plus
+							|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compras
+					li
+						a.btn.default(href="/pages/hojaBalance")
 							i.glyphicon.glyphicon-shopping-cart
-							|Ventas
+							|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ventas
 					li
 						a.btn.default(href="/pages/reports")
 							i.glyphicon.glyphicon-list-alt 
-							|Reportes
-					if (user&&user.email)
-						li: a.btn(href="#")| #{user.email}
+							|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reportes
 					li: a.btn(class="btn-danger",href="/users/logout"): i.glyphicon.glyphicon-off

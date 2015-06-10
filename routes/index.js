@@ -62,7 +62,12 @@ var otherPages = function(req,res){
           }else{
             if(stats.isFile()){//verificamos que sea un archivo
               console.log(page)
-              res.render(("%d.jade",page))
+              data = {
+                user:{
+                  email:"admin@gmail.com"
+                }
+              }
+              res.render(("%d.jade",page),data)
             }else{
               res.redirect('/');      
             }
@@ -77,11 +82,15 @@ var partials = function(req,res){
   var page = req.params.page;
   var data = {}
   var isMovile = userAgent(req).isMovile()
+  data = {
+    user:{
+      email:"admin@gmail.com"
+    }
+  } 
 
   switch(true){
     case (page=="objectBoardApp"):
       /*Solo se puede acceder a esta pagina si se esta loggeado*/
-          
         res.render('partials/'+page,data);
     break;
     default:
